@@ -18,11 +18,15 @@ namespace RageShowMyLocation
         static bool option_subtitle = false;
         static bool option_notify = false;
         static Rage.Graphics graf;
+       
         public static void Main()
         {
+                      
+            Game.FrameRender += new EventHandler<GraphicsEventArgs>((obj,graf_ev) => DisplayPos(obj,graf_ev));
             while (true)
             {
-                DisplayPos();
+              
+                //DisplayPos();
                 GameFiber.Yield();
             }   
             
@@ -31,23 +35,24 @@ namespace RageShowMyLocation
                 
         }
 
-        public static void DisplayPos()
+
+        public static void DisplayPos(System.Object obj, GraphicsEventArgs eva)
         {
            
-                Ped ped = Game.LocalPlayer.Character;
-                pl_pos = ped.Position;
-            Loc = GetLocation(pl_pos);
-            Update_pos_onScreen(Loc);
+            Ped ped = Game.LocalPlayer.Character;
+            pl_pos = ped.Position;
+            String street = Rage.World.GetStreetName(pl_pos);
+            Update_pos_onScreen(Loc, eva);
+            Point pt = new Point(500, 0);
+            Color white = Color.FromName("White");
+            eva.Graphics.DrawText(street, "Arial", 21, pt, white);
+
             
         }
-        public static String GetLocation(Rage.Vector3 pos)
+               
+        public static void Update_pos_onScreen(String street, GraphicsEventArgs g_ev)
         {
-            String street = Rage.World.GetStreetName(pos);
-            return street;
-        }
-        public static void Update_pos_onScreen(String street)
-        {
-            Point pt = new Point(300,1009);
+            Point pt = new Point(500,0);
             Color white = Color.FromName("White");
 
             //if (option_notify)
@@ -71,7 +76,10 @@ namespace RageShowMyLocation
                 //do nothing
             //}
             
-            graf.DrawText(street, "Arial Black", 21, pt, white);
+
+
+                
+            
                 
         }
        
