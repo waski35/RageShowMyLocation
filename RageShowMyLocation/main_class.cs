@@ -13,26 +13,32 @@ namespace RageShowMyLocation
     {
         public static Rage.Vector3 pl_pos = new Vector3(0,0,0);
         public static String Loc = "";
+        public static uint notif_handle = 0;
+        static string street_bckp = "";
+        static bool option_subtitle = false;
+        static bool option_notify = false;
         public static void Main()
         {
-            GameFiber.StartNew(delegate
+            while (true)
             {
-                for (; ; )
-                {
-                    foreach (Rage.Ped ped in Rage.World.GetAllPeds())
-                    {
-                        if (ped.IsPlayer)
-                        {
-                            pl_pos = ped.Position;
-                            Loc = GetLocation(pl_pos);
-                            break;
-                        }
-                    }
-                    Update_pos_onScreen(Loc);
-                }
-            });
+                DisplayPos();
+                GameFiber.Yield();
+            }   
+            
+            
+
+                
         }
 
+        public static void DisplayPos()
+        {
+           
+                Ped ped = Game.LocalPlayer.Character;
+                pl_pos = ped.Position;
+            Loc = GetLocation(pl_pos);
+            Update_pos_onScreen(Loc);
+            
+        }
         public static String GetLocation(Rage.Vector3 pos)
         {
             String street = Rage.World.GetStreetName(pos);
@@ -42,7 +48,27 @@ namespace RageShowMyLocation
         {
             Point pt = new Point(200,20);
             Color white = Color.FromName("White");
-            Game.DisplayNotification(street);
+
+            if (option_notify)
+            {
+                if (street_bckp != street && street_bckp != "")
+                {
+
+                    Game.RemoveNotification(notif_handle);
+
+                }
+                notif_handle = Game.DisplayNotification(street);
+
+                street_bckp = street;
+            }
+            else if (option_subtitle)
+            {
+                Game.DisplaySubtitle(street, 1000);
+            }
+            else
+            {
+                //do nothing
+            }
         }
        
 
