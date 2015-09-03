@@ -46,29 +46,32 @@ namespace RageShowMyLocation
         }
         public static void Update_pos_onScreen(String street)
         {
-            Point pt = new Point(200,20);
+            Point pt = new Point(300,1009);
             Color white = Color.FromName("White");
 
             //if (option_notify)
             //{
-                if (street_bckp != street && street_bckp != "")
-                {
+            //    if (street_bckp != street && street_bckp != "")
+            //    {
 
-                    Game.RemoveNotification(notif_handle);
+            //        Game.RemoveNotification(notif_handle);
 
-                }
-                notif_handle = Game.DisplayNotification(street);
+           //     }
+           //     notif_handle = Game.DisplayNotification(street);
 
-                street_bckp = street;
+            //    street_bckp = street;
             //}
             //else if (option_subtitle)
             //{
-                Game.DisplaySubtitle(street, 1000);
+             //   Game.DisplaySubtitle(street, 1000);
             //}
             //else
             //{
                 //do nothing
             //}
+            Rage.Graphics graf = null;
+            graf.DrawText(street, "Arial Black", 21, pt, white);
+                
         }
        
 
