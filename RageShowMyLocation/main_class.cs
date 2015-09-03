@@ -42,10 +42,14 @@ namespace RageShowMyLocation
             Ped ped = Game.LocalPlayer.Character;
             pl_pos = ped.Position;
             String street = Rage.World.GetStreetName(pl_pos);
-            Update_pos_onScreen(Loc, eva);
+
+            //street = street + ", " + GetDistrict(street);
+            street = street + ", " + GetCounty(street);
+            
+            
             Point pt = new Point(500, 0);
             Color white = Color.FromName("White");
-            eva.Graphics.DrawText(street, "Arial", 21, pt, white);
+            eva.Graphics.DrawText(street, "Arial", 14, pt, white);
 
             
         }
@@ -712,25 +716,17 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos City";
             }
-            else if (street.Contains("Zancudo"))
+            else if (street.Contains("Zancudo Barranca"))
             {
                 county = "Los Santos County";
             }
-            else if (street.Contains("Alta"))
+            else if (street.Contains("Interstate") || street.Contains("Route"))
             {
-                county = "Los Santos County";
-            }
-            else if (street.Contains("Amarillo"))
-            {
-                county = "Los Santos County";
-            }
-            else if (street.Contains("Americano"))
-            {
-                county = "Los Santos County";
+                county = "San Andreas Highway System";
             }
             else
             {
-                county = "";
+                county = "Blaine County";
             }
 
             return county;
