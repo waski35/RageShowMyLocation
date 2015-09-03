@@ -49,8 +49,8 @@ namespace RageShowMyLocation
             Point pt = new Point(200,20);
             Color white = Color.FromName("White");
 
-            if (option_notify)
-            {
+            //if (option_notify)
+            //{
                 if (street_bckp != street && street_bckp != "")
                 {
 
@@ -60,15 +60,15 @@ namespace RageShowMyLocation
                 notif_handle = Game.DisplayNotification(street);
 
                 street_bckp = street;
-            }
-            else if (option_subtitle)
-            {
+            //}
+            //else if (option_subtitle)
+            //{
                 Game.DisplaySubtitle(street, 1000);
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 //do nothing
-            }
+            //}
         }
        
 
