@@ -17,6 +17,7 @@ namespace RageShowMyLocation
         static string street_bckp = "";
         static bool option_subtitle = false;
         static bool option_notify = false;
+        static Rage.Graphics graf;
         public static void Main()
         {
             while (true)
@@ -69,7 +70,7 @@ namespace RageShowMyLocation
             //{
                 //do nothing
             //}
-            Rage.Graphics graf = null;
+            
             graf.DrawText(street, "Arial Black", 21, pt, white);
                 
         }
