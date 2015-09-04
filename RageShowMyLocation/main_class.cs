@@ -106,6 +106,10 @@ namespace RageShowMyLocation
             {
                 ret = "Limit : 35 MPH";
             }
+            else
+            {
+                ret = "Limit : N/A";
+            }
             return ret;
         }
         public static String GetColor(String str)
