@@ -99,6 +99,10 @@ namespace RageShowMyLocation
             {
                 ret = "Limit : 60 MPH";
             }
+            else if (str.Contains("County"))
+            {
+                ret = "Limit : 45 MPH";
+            }
             else if (str.Contains("City"))
             {
                 ret = "Limit : 35 MPH";
