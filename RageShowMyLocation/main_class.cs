@@ -258,7 +258,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Cockingend"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Conquistador"))
             {
@@ -278,7 +278,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Cox"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Crusade"))
             {
@@ -294,7 +294,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Didion"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Dorset Dr"))
             {
@@ -362,7 +362,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Fenwell"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Forum"))
             {
@@ -406,7 +406,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Hangman"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Hardy"))
             {
@@ -422,7 +422,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Hillcrest"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Imagination"))
             {
@@ -454,7 +454,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Kimble Hill"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Kortz"))
             {
@@ -470,7 +470,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Lake Vinewood"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Las Lagunas"))
             {
@@ -510,7 +510,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Marlowe"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Melanoma"))
             {
@@ -522,7 +522,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Milton"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Mirror Park"))
             {
@@ -538,7 +538,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Mount Haan"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Mount Vinewood"))
             {
@@ -558,7 +558,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Normandy"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Nikola"))
             {
@@ -570,11 +570,11 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("North Conker"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("North Sheldon"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("North Rockford"))
             {
@@ -602,7 +602,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Picture Perfect"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Plaice"))
             {
@@ -694,7 +694,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("South Mo Milton"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("South Rockford"))
             {
@@ -762,7 +762,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Vinewood"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Vitus"))
             {
