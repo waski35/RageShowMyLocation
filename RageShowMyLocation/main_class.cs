@@ -1,5 +1,6 @@
 ﻿using Rage;
 using System;
+using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,49 +40,57 @@ namespace RageShowMyLocation
         public static void ReadSettings()
         {
             string line = "";
-            System.IO.StreamReader file = new System.IO.StreamReader("RageShowMyLocation.ini");
-            int index_start = 0;
-            int index_stop = 0;
-            while ((line = file.ReadLine()) != null)
+            string path = Directory.GetCurrentDirectory();
+            path = path + "\\Plugins\\RageShowMyLocation.ini";
+            if (File.Exists(path))
             {
-                if (line.Contains("pos_x="))
+                System.IO.StreamReader file = new System.IO.StreamReader(path);
+                int index_start = 0;
+                int index_stop = 0;
+                char[] usun_zn = { ';', ',', '.', '#', '/', '\\' };
+                while ((line = file.ReadLine()) != null)
                 {
-                    index_start = line.IndexOf('=');
-                    index_stop = line.Length - line.IndexOf('=');
-                    option_pos_x = Convert.ToInt32(line.Substring(index_start,index_stop));
-                }
-                if (line.Contains("pos_y="))
-                {
-                    index_start = line.IndexOf('=');
-                    index_stop = line.Length - line.IndexOf('=');
-                    option_pos_y = Convert.ToInt32(line.Substring(index_start, index_stop));
-                }
-                if (line.Contains("font_name="))
-                {
-                    index_start = line.IndexOf('=');
-                    index_stop = line.Length - line.IndexOf('=');
-                    option_font_name = Convert.ToString(line.Substring(index_start, index_stop));
-                }
-                if (line.Contains("font_size="))
-                {
-                    index_start = line.IndexOf('=');
-                    index_stop = line.Length - line.IndexOf('=');
-                    option_font_size = Convert.ToInt32(line.Substring(index_start, index_stop));
-                }
-                
-            }
+                    line = line.Trim();
+                    line = line.Trim(usun_zn);
+                    if (line.Contains("pos_x="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_x = Convert.ToInt32(line.Substring(index_start, index_stop));
+                    }
+                    if (line.Contains("pos_y="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_y = Convert.ToInt32(line.Substring(index_start, index_stop));
+                    }
+                    if (line.Contains("font_name="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_font_name = Convert.ToString(line.Substring(index_start, index_stop));
+                    }
+                    if (line.Contains("font_size="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_font_size = Convert.ToInt32(line.Substring(index_start, index_stop));
+                    }
 
-            file.Close();
+                }
+
+                file.Close();
+            }
 
         }
         public static String GetColor(String str)
         {
             string ret = "White";
-            if (str.Contains("Interstate"))
+            if (str.Contains("Interstate") || str.Contains("Międzystan"))
             {
                 ret = "Red";
             }
-            else if (str.Contains("Route"))
+            else if (str.Contains("Route") || str.Contains("Droga"))
             {
                 ret = "Yellow";
             }
@@ -789,7 +798,7 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos County";
             }
-            else if (street.Contains("Interstate") || street.Contains("Route"))
+            else if (street.Contains("Interstate") || street.Contains("Route") || street.Contains("Droga") || street.Contains("Międzystan"))
             {
                 county = "San Andreas Highway System";
             }
