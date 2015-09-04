@@ -18,8 +18,11 @@ namespace RageShowMyLocation
         static int option_pos_y = 0;
         static string option_font_name = "Arial";
         static int option_font_size = 14;
+        static string option_interstate_color = "Red";
+        static string option_route_color = "Yellow";
+        static string option_city_color = "White";
         static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation 0.0.3.10";
+        static string plug_ver = "RageShowMyLocation 0.0.3.12";
 
        
         public static void Main()
