@@ -91,13 +91,13 @@ namespace RageShowMyLocation
         public static string GetSpeedLimit(String str)
         {
             string ret = "";
-            if (str.Contains("San Andreas Highway System"))
-            {
-                ret = "Limit : 60 MPH";
-            }
-            else if (str.Contains("County"))
+            if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
             {
                 ret = "Limit : 50 MPH";
+            }
+            else if (str.Contains("Great Ocean") || str.Contains("Tongva") || str.Contains("Senora") || str.Contains("Palomino") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga"))
+            {
+                ret = "Limit : 60 MPH";
             }
             else if (str.Contains("City"))
             {
@@ -108,11 +108,11 @@ namespace RageShowMyLocation
         public static String GetColor(String str)
         {
             string ret = "White";
-            if (str.Contains("Interstate") || str.Contains("Międzystan") || str.Contains("Fwy") || str.Contains("Freeway"))
+            if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
             {
                 ret = "Red";
             }
-            else if (str.Contains("Route") || str.Contains("Droga") || str.Contains("Great Ocean") || str.Contains("Hwy") || str.Contains("Highway"))
+            else if (str.Contains("Great Ocean") || str.Contains("Tongva") || str.Contains("Senora") || str.Contains("Palomino") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga") || str.Contains("Hwy") || str.Contains("Highway"))
             {
                 ret = "Yellow";
             }
@@ -196,7 +196,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Amarillo"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Americano"))
             {
@@ -260,7 +260,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Capital"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Carcer"))
             {
@@ -368,11 +368,11 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("El Burro"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("El Rancho"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Equality"))
             {
@@ -396,7 +396,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Fudge"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Galileo"))
             {
@@ -488,7 +488,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Labor"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Laguna"))
             {
@@ -752,7 +752,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Sustancia"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Swiss"))
             {
@@ -823,6 +823,10 @@ namespace RageShowMyLocation
                 county = "Los Santos City";
             }
             else if (street.Contains("Zancudo Barranca"))
+            {
+                county = "Los Santos County";
+            }
+            else if (street.Contains("Zancudo Grande Valley"))
             {
                 county = "Los Santos County";
             }
