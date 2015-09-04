@@ -25,7 +25,9 @@ namespace RageShowMyLocation
         {
                       
             Game.FrameRender += new EventHandler<GraphicsEventArgs>((obj,graf_ev) => DisplayPos(obj,graf_ev));
+            Game.Log("RageShowMyLocation 0.0.2.15: Added event handler for FrameRender");
             ReadSettings();
+            Game.Log("RageShowMyLocation 0.0.2.15: Plugin loaded !");
             while (true)
             {
               
@@ -88,11 +90,11 @@ namespace RageShowMyLocation
         public static String GetColor(String str)
         {
             string ret = "White";
-            if (str.Contains("Interstate") || str.Contains("Międzystan") || string.Equals(str, "Fwy", StringComparison.OrdinalIgnoreCase))
+            if (str.Contains("Interstate") || str.Contains("Międzystan") || str.Contains("Fwy") || str.Contains("Freeway"))
             {
                 ret = "Red";
             }
-            else if (str.Contains("Route") || str.Contains("Droga") || str.Contains("Great Ocean") || string.Equals(str, "Hwy", StringComparison.OrdinalIgnoreCase))
+            else if (str.Contains("Route") || str.Contains("Droga") || str.Contains("Great Ocean") || str.Contains("Hwy") || str.Contains("Highway"))
             {
                 ret = "Yellow";
             }
@@ -144,7 +146,11 @@ namespace RageShowMyLocation
         public static String GetCounty(string street)
         {
             String county = "";
-            if (street.Contains("Abattoir"))
+            if (street.Contains("Interstate") || street.Contains("Route") || street.Contains("Droga") || street.Contains("Międzystan") || street.Contains("Great Ocean") || street.Contains("Hwy") || street.Contains("Fwy") || street.Contains("Freeway") || street.Contains("Highway"))
+            {
+                county = "San Andreas Highway System";
+            }
+            else if (street.Contains("Abattoir"))
             {
                 county = "Los Santos City";
             }
@@ -799,10 +805,6 @@ namespace RageShowMyLocation
             else if (street.Contains("Zancudo Barranca"))
             {
                 county = "Los Santos County";
-            }
-            else if (street.Contains("Interstate") || street.Contains("Route") || street.Contains("Droga") || street.Contains("Międzystan") || street.Contains("Great Ocean") || string.Equals(street,"Hwy",StringComparison.OrdinalIgnoreCase) || string.Equals(street,"Fwy",StringComparison.OrdinalIgnoreCase))
-            {
-                county = "San Andreas Highway System";
             }
             else
             {
