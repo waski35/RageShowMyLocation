@@ -19,7 +19,7 @@ namespace RageShowMyLocation
         static string option_font_name = "Arial";
         static int option_font_size = 14;
         static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation 0.0.3.5";
+        static string plug_ver = "RageShowMyLocation 0.0.3.10";
 
        
         public static void Main()
@@ -132,9 +132,10 @@ namespace RageShowMyLocation
 
             //street = street + ", " + GetDistrict(street);
             street = street + ", " + GetCounty(street);
-            //street = street + " - Time - " + GetCurTime();
-
             street = street + ", " + GetSpeedLimit(street);
+            street = street + " - Time - " + GetCurTime();
+
+            
             
             
             Point pt = new Point(option_pos_x, option_pos_y);
@@ -146,11 +147,9 @@ namespace RageShowMyLocation
         public static String GetCurTime()
         {
             String ret = "";
-            uint time_mili = Game.GameTime;
-            DateTime date_time = new DateTime();
-            date_time.AddMilliseconds(Convert.ToDouble(time_mili));
-            String godz = Convert.ToString(date_time.Hour);
-            String minuta = Convert.ToString(date_time.Minute);
+            TimeSpan time_mili = World.TimeOfDay;
+            String godz = Convert.ToString(time_mili.Hours);
+            String minuta = Convert.ToString(time_mili.Minutes);
             ret = godz + ":" + minuta;
             return ret;
             
@@ -827,6 +826,10 @@ namespace RageShowMyLocation
                 county = "Los Santos County";
             }
             else if (street.Contains("Zancudo Grande Valley"))
+            {
+                county = "Los Santos County";
+            }
+            else if (street.Contains("Zancudo Rd"))
             {
                 county = "Los Santos County";
             }
