@@ -32,10 +32,12 @@ namespace RageShowMyLocation
             Game.Log(plug_ver + " : Added event handler for FrameRender");
             ReadSettings();
             Game.Log(plug_ver + " : Plugin loaded !");
-                     
-            
 
-                
+            while (true)
+            {
+                GameFiber.Yield();
+            }
+                            
         }
         public static void ReadSettings()
         {
