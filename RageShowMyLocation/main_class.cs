@@ -88,11 +88,11 @@ namespace RageShowMyLocation
         public static String GetColor(String str)
         {
             string ret = "White";
-            if (str.Contains("Interstate") || str.Contains("Międzystan"))
+            if (str.Contains("Interstate") || str.Contains("Międzystan") || string.Equals(str, "Fwy", StringComparison.OrdinalIgnoreCase))
             {
                 ret = "Red";
             }
-            else if (str.Contains("Route") || str.Contains("Droga"))
+            else if (str.Contains("Route") || str.Contains("Droga") || str.Contains("Great Ocean") || string.Equals(str, "Hwy", StringComparison.OrdinalIgnoreCase))
             {
                 ret = "Yellow";
             }
@@ -399,10 +399,6 @@ namespace RageShowMyLocation
             else if (street.Contains("Grove"))
             {
                 county = "Los Santos City";
-            }
-            else if (street.Contains("Great Ocean"))
-            {
-                county = "Los Santos County";
             }
             else if (street.Contains("Hanger"))
             {
@@ -804,7 +800,7 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos County";
             }
-            else if (street.Contains("Interstate") || street.Contains("Route") || street.Contains("Droga") || street.Contains("Międzystan"))
+            else if (street.Contains("Interstate") || street.Contains("Route") || street.Contains("Droga") || street.Contains("Międzystan") || street.Contains("Great Ocean") || string.Equals(street,"Hwy",StringComparison.OrdinalIgnoreCase) || string.Equals(street,"Fwy",StringComparison.OrdinalIgnoreCase))
             {
                 county = "San Andreas Highway System";
             }
