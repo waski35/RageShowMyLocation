@@ -483,7 +483,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Kortz"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Labor"))
             {
