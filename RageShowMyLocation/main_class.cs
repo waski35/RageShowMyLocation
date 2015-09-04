@@ -400,6 +400,10 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos City";
             }
+            else if (street.Contains("Great Ocean"))
+            {
+                county = "Los Santos County";
+            }
             else if (street.Contains("Hanger"))
             {
                 county = "Los Santos City";
@@ -578,7 +582,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("North Rockford"))
             {
-                county = "Los Santos City";
+                county = "Los Santos County";
             }
             else if (street.Contains("Occupation"))
             {
