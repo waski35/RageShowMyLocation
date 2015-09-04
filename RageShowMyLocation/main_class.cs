@@ -44,10 +44,12 @@ namespace RageShowMyLocation
             path = path + "\\Plugins\\RageShowMyLocation.ini";
             if (File.Exists(path))
             {
+                Game.Log("RageShowMyLocation : found settings file, adjusting settings.");
+                Game.Log("RageShowMyLocation : Settings File path : " + path);
                 System.IO.StreamReader file = new System.IO.StreamReader(path);
                 int index_start = 0;
                 int index_stop = 0;
-                char[] usun_zn = { ';', ',', '.', '#', '/', '\\' };
+                char[] usun_zn = { ';', ',', '.', '#', '/', '\\',' '};
                 while ((line = file.ReadLine()) != null)
                 {
                     line = line.Trim();
@@ -56,25 +58,25 @@ namespace RageShowMyLocation
                     {
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
-                        option_pos_x = Convert.ToInt32(line.Substring(index_start, index_stop));
+                        option_pos_x = Convert.ToInt32(line.Substring(index_start + 1));
                     }
                     if (line.Contains("pos_y="))
                     {
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
-                        option_pos_y = Convert.ToInt32(line.Substring(index_start, index_stop));
+                        option_pos_y = Convert.ToInt32(line.Substring(index_start + 1));
                     }
                     if (line.Contains("font_name="))
                     {
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
-                        option_font_name = Convert.ToString(line.Substring(index_start, index_stop));
+                        option_font_name = Convert.ToString(line.Substring(index_start + 1));
                     }
                     if (line.Contains("font_size="))
                     {
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
-                        option_font_size = Convert.ToInt32(line.Substring(index_start, index_stop));
+                        option_font_size = Convert.ToInt32(line.Substring(index_start + 1));
                     }
 
                 }
