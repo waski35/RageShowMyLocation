@@ -22,7 +22,7 @@ namespace RageShowMyLocation
         static string option_route_color = "Yellow";
         static string option_city_color = "White";
         static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation 0.0.3.12";
+        static string plug_ver = "RageShowMyLocation 0.0.3.14";
 
        
         public static void Main()
@@ -32,13 +32,7 @@ namespace RageShowMyLocation
             Game.Log(plug_ver + " : Added event handler for FrameRender");
             ReadSettings();
             Game.Log(plug_ver + " : Plugin loaded !");
-            while (true)
-            {
-              
-                //DisplayPos();
-                GameFiber.Yield();
-            }   
-            
+                     
             
 
                 
