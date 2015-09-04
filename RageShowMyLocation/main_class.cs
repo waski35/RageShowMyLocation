@@ -13,16 +13,18 @@ namespace RageShowMyLocation
     {
         public static Rage.Vector3 pl_pos = new Vector3(0,0,0);
         public static String Loc = "";
-        public static uint notif_handle = 0;
-        static string street_bckp = "";
-        static bool option_subtitle = false;
-        static bool option_notify = false;
+        static int option_pos_x = 500;
+        static int option_pos_y = 0;
+        static string option_font_name = "Arial";
+        static int option_font_size = 14;
         static Rage.Graphics graf;
+
        
         public static void Main()
         {
                       
             Game.FrameRender += new EventHandler<GraphicsEventArgs>((obj,graf_ev) => DisplayPos(obj,graf_ev));
+            ReadSettings();
             while (true)
             {
               
@@ -34,7 +36,61 @@ namespace RageShowMyLocation
 
                 
         }
+        public static void ReadSettings()
+        {
+            string line = "";
+            System.IO.StreamReader file = new System.IO.StreamReader("RageShowMyLocation.ini");
+            int index_start = 0;
+            int index_stop = 0;
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.Contains("pos_x="))
+                {
+                    index_start = line.IndexOf('=');
+                    index_stop = line.Length - line.IndexOf('=');
+                    option_pos_x = Convert.ToInt32(line.Substring(index_start,index_stop));
+                }
+                if (line.Contains("pos_y="))
+                {
+                    index_start = line.IndexOf('=');
+                    index_stop = line.Length - line.IndexOf('=');
+                    option_pos_y = Convert.ToInt32(line.Substring(index_start, index_stop));
+                }
+                if (line.Contains("font_name="))
+                {
+                    index_start = line.IndexOf('=');
+                    index_stop = line.Length - line.IndexOf('=');
+                    option_font_name = Convert.ToString(line.Substring(index_start, index_stop));
+                }
+                if (line.Contains("font_size="))
+                {
+                    index_start = line.IndexOf('=');
+                    index_stop = line.Length - line.IndexOf('=');
+                    option_font_size = Convert.ToInt32(line.Substring(index_start, index_stop));
+                }
+                
+            }
 
+            file.Close();
+
+        }
+        public static String GetColor(String str)
+        {
+            string ret = "White";
+            if (str.Contains("Interstate"))
+            {
+                ret = "Red";
+            }
+            else if (str.Contains("Route"))
+            {
+                ret = "Yellow";
+            }
+            else
+            {
+                ret = "White";
+            }
+            return ret;
+        }
 
         public static void DisplayPos(System.Object obj, GraphicsEventArgs eva)
         {
@@ -48,9 +104,9 @@ namespace RageShowMyLocation
             //street = street + " - Time - " + GetCurTime();
             
             
-            Point pt = new Point(500, 0);
-            Color white = Color.FromName("White");
-            eva.Graphics.DrawText(street, "Arial", 14, pt, white);
+            Point pt = new Point(option_pos_x, option_pos_y);
+            Color text_col = Color.FromName(GetColor(street));
+            eva.Graphics.DrawText(street, option_font_name, option_font_size, pt, text_col);
 
             
         }
