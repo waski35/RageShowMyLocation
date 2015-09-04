@@ -19,15 +19,16 @@ namespace RageShowMyLocation
         static string option_font_name = "Arial";
         static int option_font_size = 14;
         static Rage.Graphics graf;
+        static string plug_ver = "RageShowMyLocation 0.0.3.5";
 
        
         public static void Main()
         {
                       
             Game.FrameRender += new EventHandler<GraphicsEventArgs>((obj,graf_ev) => DisplayPos(obj,graf_ev));
-            Game.Log("RageShowMyLocation 0.0.2.15: Added event handler for FrameRender");
+            Game.Log(plug_ver + " : Added event handler for FrameRender");
             ReadSettings();
-            Game.Log("RageShowMyLocation 0.0.2.15: Plugin loaded !");
+            Game.Log(plug_ver + " : Plugin loaded !");
             while (true)
             {
               
@@ -46,8 +47,8 @@ namespace RageShowMyLocation
             path = path + "\\Plugins\\RageShowMyLocation.ini";
             if (File.Exists(path))
             {
-                Game.Log("RageShowMyLocation : found settings file, adjusting settings.");
-                Game.Log("RageShowMyLocation : Settings File path : " + path);
+                Game.Log(plug_ver + " : found settings file, adjusting settings.");
+                Game.Log(plug_ver + " : Settings File path : " + path);
                 System.IO.StreamReader file = new System.IO.StreamReader(path);
                 int index_start = 0;
                 int index_stop = 0;
@@ -87,6 +88,23 @@ namespace RageShowMyLocation
             }
 
         }
+        public static string GetSpeedLimit(String str)
+        {
+            string ret = "";
+            if (str.Contains("San Andreas Highway System"))
+            {
+                ret = "Limit : 60 MPH";
+            }
+            else if (str.Contains("County"))
+            {
+                ret = "Limit : 50 MPH";
+            }
+            else if (str.Contains("City"))
+            {
+                ret = "Limit : 35 MPH";
+            }
+            return ret;
+        }
         public static String GetColor(String str)
         {
             string ret = "White";
@@ -115,6 +133,8 @@ namespace RageShowMyLocation
             //street = street + ", " + GetDistrict(street);
             street = street + ", " + GetCounty(street);
             //street = street + " - Time - " + GetCurTime();
+
+            street = street + ", " + GetSpeedLimit(street);
             
             
             Point pt = new Point(option_pos_x, option_pos_y);
