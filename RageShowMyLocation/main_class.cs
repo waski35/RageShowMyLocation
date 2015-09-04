@@ -45,12 +45,25 @@ namespace RageShowMyLocation
 
             //street = street + ", " + GetDistrict(street);
             street = street + ", " + GetCounty(street);
+            //street = street + " - Time - " + GetCurTime();
             
             
             Point pt = new Point(500, 0);
             Color white = Color.FromName("White");
             eva.Graphics.DrawText(street, "Arial", 14, pt, white);
 
+            
+        }
+        public static String GetCurTime()
+        {
+            String ret = "";
+            uint time_mili = Game.GameTime;
+            DateTime date_time = new DateTime();
+            date_time.AddMilliseconds(Convert.ToDouble(time_mili));
+            String godz = Convert.ToString(date_time.Hour);
+            String minuta = Convert.ToString(date_time.Minute);
+            ret = godz + ":" + minuta;
+            return ret;
             
         }
                
