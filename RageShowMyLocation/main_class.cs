@@ -23,7 +23,7 @@ namespace RageShowMyLocation
         static string option_city_color = "White";
         static int option_developer = 0;
         static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation 0.0.3.18";
+        static string plug_ver = "RageShowMyLocation 0.0.4.6";
 
        
         public static void Main()
@@ -101,7 +101,7 @@ namespace RageShowMyLocation
             {
                 ret = "Limit : 50 MPH";
             }
-            else if (str.Contains("Great Ocean") || str.Contains("Tongva") || str.Contains("Senora") || str.Contains("Palomino") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga"))
+            else if (str.Contains("Great Ocean") || str.Contains("Tongva Dr") || str.Contains("Senora Fwy") || str.Contains("Palomino Fwy") || str.Contains("Senora Freeway") || str.Contains("Palomino Freeway") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga"))
             {
                 ret = "Limit : 60 MPH";
             }
@@ -122,11 +122,11 @@ namespace RageShowMyLocation
         public static String GetColor(String str)
         {
             string ret = "White";
-            if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
+            if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro Fwy") || str.Contains("Olympic Fwy") || str.Contains("La Puerta Fwy"))
             {
                 ret = "Red";
             }
-            else if (str.Contains("Great Ocean") || str.Contains("Tongva") || str.Contains("Senora") || str.Contains("Palomino") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga") || str.Contains("Hwy") || str.Contains("Highway"))
+            else if (str.Contains("Great Ocean") || str.Contains("Tongva Dr") || str.Contains("Senora Fwy") || str.Contains("Palomino Fwy") || str.Contains("Senora Freeway") || str.Contains("Palomino Freeway") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga") || str.Contains("Hwy") || str.Contains("Highway"))
             {
                 ret = "Yellow";
             }
@@ -182,11 +182,8 @@ namespace RageShowMyLocation
         public static String GetCounty(string street)
         {
             String county = "";
-            if (street.Contains("Interstate") || street.Contains("Route") || street.Contains("Droga") || street.Contains("Międzystan") || street.Contains("Great Ocean") || street.Contains("Hwy") || street.Contains("Fwy") || street.Contains("Freeway") || street.Contains("Highway"))
-            {
-                county = "San Andreas Highway System";
-            }
-            else if (street.Contains("Abattoir"))
+            
+            if (street.Contains("Abattoir"))
             {
                 county = "Los Santos City";
             }
@@ -334,6 +331,10 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos City";
             }
+            else if (street.Contains("Del Perro"))
+            {
+                county = "Los Santos City";
+            }
             else if (street.Contains("Didion"))
             {
                 county = "Los Santos County";
@@ -404,6 +405,10 @@ namespace RageShowMyLocation
                     county = "Los Santos City";
                 }
             }
+            else if (street.Contains("Elysian Fields"))
+            {
+                county = "Los Santos City";
+            }
             else if (street.Contains("Equality"))
             {
                 county = "Los Santos City";
@@ -455,6 +460,21 @@ namespace RageShowMyLocation
             else if (street.Contains("Grove"))
             {
                 county = "Los Santos City";
+            }
+            else if (street.Contains("Great Ocean"))
+            {
+                if (pl_pos.Y > -340.0 && pl_pos.Y < 2540)
+                {
+                    county = "Los Santos County";
+                }
+                else if (pl_pos.Y < -340)
+                {
+                    county = "Los Santos City";
+                }
+                else if (pl_pos.Y > 2540)
+                {
+                    county = "Blaine County";
+                }
             }
             else if (street.Contains("Hanger"))
             {
@@ -527,6 +547,10 @@ namespace RageShowMyLocation
                     county = "Los Santos City";
                 }
             }
+            else if (street.Contains("La Puerta"))
+            {
+                county = "Los Santos City";
+            }
             else if (street.Contains("Laguna"))
             {
                 county = "Los Santos City";
@@ -554,6 +578,17 @@ namespace RageShowMyLocation
             else if (street.Contains("Low Power"))
             {
                 county = "Los Santos City";
+            }
+            else if (street.Contains("Los Santos"))
+            {
+                if (pl_pos.Y > -149.0)
+                {
+                    county = "Los Santos County";
+                }
+                else
+                {
+                    county = "Los Santos City";
+                }
             }
             else if (street.Contains("Macdonald"))
             {
@@ -641,7 +676,7 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("North Rockford"))
             {
-                if (Math.Abs(pl_pos.Y) < 149.0)
+                if (pl_pos.Y > -149.0)
                 {
                     county = "Los Santos County";
                 }
@@ -654,13 +689,28 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos City";
             }
+            else if (street.Contains("Olympic"))
+            {
+                if (pl_pos.X < -1060)
+                {
+                    county = "Los Santos County";
+                }
+                else
+                {
+                    county = "Los Santos City";
+                }
+            }
             else if (street.Contains("Orchardville"))
             {
                 county = "Los Santos City";
             }
-            else if (street.Contains("Palomino"))
+            else if (street.Contains("Palomino Ave"))
             {
                 county = "Los Santos City";
+            }
+            else if (street.Contains("Palomino Fwy"))
+            {
+                county = "Los Santos County";
             }
             else if (street.Contains("Peaceful"))
             {
@@ -734,9 +784,16 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos City";
             }
-            else if (street.Contains("Senora"))
+            else if (street.Contains("Senora Fwy"))
             {
-                county = "Los Santos County";
+                if (pl_pos.Y > 2930)
+                {
+                    county = "Blaine County";
+                }
+                else
+                {
+                    county = "Los Santos County";
+                }
             }
             else if (street.Contains("Shank"))
             {
@@ -878,9 +935,17 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos County";
             }
+            else if (street.Contains("68"))
+            {
+                county = "Los Santos County";
+            }
             else
             {
                 county = "Blaine County";
+            }
+            if (street.Contains("Los Santos Freeway") || street.Contains("Los Santos Fwy") || street.Contains("Del Perro Fwy") || street.Contains("Olympic Fwy") || street.Contains("La Puerta Fwy") || street.Contains("Interstate") || street.Contains("Route") || street.Contains("Droga") || street.Contains("Międzystan") || street.Contains("Great Ocean") || street.Contains("Hwy") || street.Contains("Fwy") || street.Contains("Freeway") || street.Contains("Highway") || street.Contains("Great Ocean") || street.Contains("Tongva Dr") || street.Contains("Senora Fwy") || street.Contains("Palomino Fwy") || street.Contains("Senora Freeway") || street.Contains("Palomino Freeway") || street.Contains("Elysian Fields"))
+            {
+                county = county + ", SA Highway System";
             }
 
             return county;
