@@ -21,8 +21,9 @@ namespace RageShowMyLocation
         static string option_interstate_color = "Red";
         static string option_route_color = "Yellow";
         static string option_city_color = "White";
+        static int option_developer = 0;
         static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation 0.0.3.14";
+        static string plug_ver = "RageShowMyLocation 0.0.3.18";
 
        
         public static void Main()
@@ -79,6 +80,12 @@ namespace RageShowMyLocation
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
                         option_font_size = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("developer_mode="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_developer = Convert.ToInt32(line.Substring(index_start + 1));
                     }
 
                 }
@@ -141,7 +148,10 @@ namespace RageShowMyLocation
             street = street + ", " + GetCounty(street);
             street = street + ", " + GetSpeedLimit(street);
             street = street + " - Time - " + GetCurTime();
-
+            if (option_developer > 0)
+            {
+                street = street + ", POS - X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y);
+            }
             
             
             
@@ -370,7 +380,14 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Elgin"))
             {
-                county = "Los Santos City";
+                if (pl_pos.Y > 206.0)
+                {
+                    county = "Los Santos County";
+                }
+                else
+                {
+                    county = "Los Santos City";
+                }
             }
             else if (street.Contains("El Burro"))
             {
@@ -378,7 +395,14 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("El Rancho"))
             {
-                county = "Los Santos County";
+                if (Math.Abs(pl_pos.X) > 1060)
+                {
+                    county = "Los Santos County";
+                }
+                else
+                {
+                    county = "Los Santos City";
+                }
             }
             else if (street.Contains("Equality"))
             {
@@ -494,7 +518,14 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("Labor"))
             {
-                county = "Los Santos County";
+                if (Math.Abs(pl_pos.X) > 1100.0)
+                {
+                    county = "Los Santos County";
+                }
+                else
+                {
+                    county = "Los Santos City";
+                }
             }
             else if (street.Contains("Laguna"))
             {
@@ -610,7 +641,14 @@ namespace RageShowMyLocation
             }
             else if (street.Contains("North Rockford"))
             {
-                county = "Los Santos County";
+                if (Math.Abs(pl_pos.Y) < 149.0)
+                {
+                    county = "Los Santos County";
+                }
+                else
+                {
+                    county = "Los Santos City";
+                }
             }
             else if (street.Contains("Occupation"))
             {
