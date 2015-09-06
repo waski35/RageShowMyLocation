@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Drawing;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,16 +24,16 @@ namespace RageShowMyLocation
         static string option_city_color = "White";
         static int option_developer = 0;
         static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation 0.0.4.8";
+        static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
 
        
         public static void Main()
         {
                       
             Game.FrameRender += new EventHandler<GraphicsEventArgs>((obj,graf_ev) => DisplayPos(obj,graf_ev));
-            Game.Log(plug_ver + " : Added event handler for FrameRender");
+            Game.LogTrivial(plug_ver + " : Added event handler for FrameRender");
             ReadSettings();
-            Game.Log(plug_ver + " : Plugin loaded !");
+            Game.LogTrivial(plug_ver + " : Plugin loaded !");
 
             while (true)
             {
@@ -47,8 +48,8 @@ namespace RageShowMyLocation
             path = path + "\\Plugins\\RageShowMyLocation.ini";
             if (File.Exists(path))
             {
-                Game.Log(plug_ver + " : found settings file, adjusting settings.");
-                Game.Log(plug_ver + " : Settings File path : " + path);
+                Game.LogTrivial(plug_ver + " : found settings file, adjusting settings.");
+                Game.LogTrivial(plug_ver + " : Settings File path : " + path);
                 System.IO.StreamReader file = new System.IO.StreamReader(path);
                 int index_start = 0;
                 int index_stop = 0;
@@ -169,7 +170,7 @@ namespace RageShowMyLocation
             
             
             
-            Point pt = new Point(option_pos_x, option_pos_y);
+            PointF pt = new PointF(option_pos_x, option_pos_y);
             Color text_col = Color.FromName(GetColor(street));
             eva.Graphics.DrawText(street, option_font_name, option_font_size, pt, text_col);
 
