@@ -41,7 +41,7 @@ namespace RageShowMyLocation
             }
                             
         }
-        public static void ReadSettings()
+        private static void ReadSettings()
         {
             string line = "";
             string path = Directory.GetCurrentDirectory();
@@ -95,7 +95,7 @@ namespace RageShowMyLocation
             }
 
         }
-        public static string GetSpeedLimit(String str)
+        private static string GetSpeedLimit(String str)
         {
             string ret = "";
             if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
@@ -134,7 +134,46 @@ namespace RageShowMyLocation
             }
             return ret;
         }
-        public static String GetColor(String str)
+        public static int GetSpeedLimitINT(String str)
+        {
+            int ret = 0;
+            if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
+            {
+                if (str.Contains("City"))
+                {
+                    ret = 45;
+                }
+                else
+                {
+                    ret = 50;
+                }
+            }
+            else if (str.Contains("Great Ocean") || str.Contains("Tongva Dr") || str.Contains("Senora Fwy") || str.Contains("Palomino Fwy") || str.Contains("Senora Freeway") || str.Contains("Palomino Freeway") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga"))
+            {
+                if (str.Contains("City"))
+                {
+                    ret = 45;
+                }
+                else
+                {
+                    ret = 60;
+                }
+            }
+            else if (str.Contains("County"))
+            {
+                ret = 45;
+            }
+            else if (str.Contains("City"))
+            {
+                ret = 35;
+            }
+            else
+            {
+                ret = 0;
+            }
+            return ret;
+        }
+        private static String GetColor(String str)
         {
             string ret = "White";
             if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro Fwy") || str.Contains("Olympic Fwy") || str.Contains("La Puerta Fwy"))
@@ -176,7 +215,7 @@ namespace RageShowMyLocation
 
             
         }
-        public static String GetCurTime()
+        private static String GetCurTime()
         {
             String ret = "";
             TimeSpan time_mili = World.TimeOfDay;
@@ -187,14 +226,14 @@ namespace RageShowMyLocation
             
         }
                
-        public static String GetDistrict(String street)
+        private static String GetDistrict(String street)
         {
             String dist = "";
 
             return dist;
         }
         
-        public static String GetCounty(string street)
+        private static String GetCounty(string street)
         {
             String county = "";
             
