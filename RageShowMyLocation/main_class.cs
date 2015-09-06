@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-[assembly: Rage.Attributes.Plugin("RageShowMyLocation", Description = "Shows current location.", Author = "waski35")]
+[assembly: Rage.Attributes.Plugin("RageShowMyLocation", Description = "Shows current location, Speed Limit etc", Author = "waski35")]
 
 namespace RageShowMyLocation
 {
