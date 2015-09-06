@@ -23,7 +23,7 @@ namespace RageShowMyLocation
         static string option_city_color = "White";
         static int option_developer = 0;
         static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation 0.0.4.6";
+        static string plug_ver = "RageShowMyLocation 0.0.4.8";
 
        
         public static void Main()
@@ -99,11 +99,25 @@ namespace RageShowMyLocation
             string ret = "";
             if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
             {
-                ret = "Limit : 50 MPH";
+                if (str.Contains("City"))
+                {
+                    ret = "Limit : 45 MPH";
+                }
+                else
+                {
+                    ret = "Limit : 50 MPH";
+                }
             }
             else if (str.Contains("Great Ocean") || str.Contains("Tongva Dr") || str.Contains("Senora Fwy") || str.Contains("Palomino Fwy") || str.Contains("Senora Freeway") || str.Contains("Palomino Freeway") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga"))
             {
-                ret = "Limit : 60 MPH";
+                if (str.Contains("City"))
+                {
+                    ret = "Limit : 45 MPH";
+                }
+                else
+                {
+                    ret = "Limit : 60 MPH";
+                }
             }
             else if (str.Contains("County"))
             {
@@ -150,7 +164,7 @@ namespace RageShowMyLocation
             street = street + " - Time - " + GetCurTime();
             if (option_developer > 0)
             {
-                street = street + ", POS - X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y);
+                street = street + ", POS - X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y) + ", Z : " + Convert.ToString(pl_pos.Z);
             }
             
             
