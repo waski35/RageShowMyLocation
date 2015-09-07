@@ -13,8 +13,8 @@ namespace RageShowMyLocation
 {
     public class RageShowMyLocationClass 
     {
-        public static Rage.Vector3 pl_pos = new Vector3(0,0,0);
-        public static String Loc = "";
+        private static Rage.Vector3 pl_pos = new Vector3(0,0,0);
+        private static String Loc = "";
         static int option_pos_x = 500;
         static int option_pos_y = 0;
         static string option_font_name = "Arial";
