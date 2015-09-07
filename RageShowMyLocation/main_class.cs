@@ -15,16 +15,16 @@ namespace RageShowMyLocation
     {
         private static Rage.Vector3 pl_pos = new Vector3(0,0,0);
         private static String Loc = "";
-        static int option_pos_x = 500;
-        static int option_pos_y = 0;
-        static string option_font_name = "Arial";
-        static int option_font_size = 14;
-        static string option_interstate_color = "Red";
-        static string option_route_color = "Yellow";
-        static string option_city_color = "White";
-        static int option_developer = 0;
-        static Rage.Graphics graf;
-        static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
+        private static int option_pos_x = 500;
+        private static int option_pos_y = 0;
+        private static string option_font_name = "Arial";
+        private static int option_font_size = 14;
+        private static string option_interstate_color = "Red";
+        private static string option_route_color = "Yellow";
+        private static string option_city_color = "White";
+        private static int option_developer = 0;
+        private static Rage.Graphics graf;
+        private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
 
        
         public static void Main()
