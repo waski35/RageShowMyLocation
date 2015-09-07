@@ -233,7 +233,7 @@ namespace RageShowMyLocation
             return dist;
         }
         
-        private static String GetCounty(string street)
+        public static String GetCounty(string street)
         {
             String county = "";
             
