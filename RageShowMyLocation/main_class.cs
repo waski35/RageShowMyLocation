@@ -838,6 +838,10 @@ namespace RageShowMyLocation
             {
                 county = "Los Santos City";
             }
+            else if (street.Contains("Senora Rd"))
+            {
+                county = "Los Santos County";
+            }
             else if (street.Contains("Senora Fwy"))
             {
                 if (pl_pos.Y > 2930)
