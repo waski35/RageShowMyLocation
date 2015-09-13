@@ -23,6 +23,7 @@ namespace RageShowMyLocation
         private static string option_route_color = "Yellow";
         private static string option_city_color = "White";
         private static int option_developer = 0;
+        private static int option_metric = 0;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
 
@@ -82,6 +83,12 @@ namespace RageShowMyLocation
                         index_stop = line.Length - line.IndexOf('=');
                         option_font_size = Convert.ToInt32(line.Substring(index_start + 1));
                     }
+                    if (line.Contains("metric_units="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_metric = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
                     if (line.Contains("developer_mode="))
                     {
                         index_start = line.IndexOf('=');
@@ -98,39 +105,17 @@ namespace RageShowMyLocation
         private static string GetSpeedLimit(String str)
         {
             string ret = "";
-            if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
+            if (option_metric == 0)
             {
-                if (str.Contains("City"))
-                {
-                    ret = "Limit : 45 MPH";
-                }
-                else
-                {
-                    ret = "Limit : 50 MPH";
-                }
+                ret = "Limit : " + Convert.ToString(GetSpeedLimitINT(str)) + " MPH";
             }
-            else if (str.Contains("Great Ocean") || str.Contains("Tongva Dr") || str.Contains("Senora Fwy") || str.Contains("Palomino Fwy") || str.Contains("Senora Freeway") || str.Contains("Palomino Freeway") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga"))
+            else if (option_metric == 1)
             {
-                if (str.Contains("City"))
-                {
-                    ret = "Limit : 45 MPH";
-                }
-                else
-                {
-                    ret = "Limit : 60 MPH";
-                }
-            }
-            else if (str.Contains("County"))
-            {
-                ret = "Limit : 45 MPH";
-            }
-            else if (str.Contains("City"))
-            {
-                ret = "Limit : 35 MPH";
+                ret = "Limit : " + Convert.ToString(Math.Round(GetSpeedLimitINT(str) * 1.6,1)) + " KMPH";
             }
             else
             {
-                ret = "Limit : N/A";
+                ret = "Limit : " + Convert.ToString(GetSpeedLimitINT(str)) + " MPH";
             }
             return ret;
         }
@@ -221,6 +206,14 @@ namespace RageShowMyLocation
             TimeSpan time_mili = World.TimeOfDay;
             String godz = Convert.ToString(time_mili.Hours);
             String minuta = Convert.ToString(time_mili.Minutes);
+            if (godz.Length < 2)
+            {
+                godz = "0" + godz;
+            }
+            if (minuta.Length < 2)
+            {
+                minuta = "0" + minuta;
+            }
             ret = godz + ":" + minuta;
             return ret;
             
