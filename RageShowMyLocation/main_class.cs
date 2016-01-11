@@ -187,7 +187,7 @@ namespace RageShowMyLocation
             street = street + ", " + GetCounty(street);
             street = street + ", " + GetSpeedLimit(street);
             street = street + " - Time - " + GetCurTime();
-            street = street + "| " + GetDirection() + " |";
+            street = street + " | " + GetDirection() + " | ";
             street = street + "Speed : " + GetPlayerSpeed();
             if (option_developer > 0)
             {
@@ -1014,15 +1014,15 @@ namespace RageShowMyLocation
             }
             else if (heading_degrees > 15.0 && heading_degrees < 80.0)
             {
-                direction = "NE";
+                direction = "NW";
             }
             else if (heading_degrees > 80.0 && heading_degrees < 105.0)
             {
-                direction = "E";
+                direction = "W";
             }
             else if (heading_degrees > 105.00 && heading_degrees < 165.0)
             {
-                direction = "SE";
+                direction = "SW";
             }
             else if (heading_degrees > 165.0 && heading_degrees < 195.0)
             {
@@ -1030,15 +1030,15 @@ namespace RageShowMyLocation
             }
             else if (heading_degrees > 195.0 && heading_degrees < 255.0)
             {
-                direction = "SW";
+                direction = "SE";
             }
             else if (heading_degrees > 255.0 && heading_degrees < 285.0)
             {
-                direction = "W";
+                direction = "E";
             }
             else if (heading_degrees > 285.0 && heading_degrees < 350.0)
             {
-                direction = "NW";
+                direction = "NE";
             }
 
             return direction;
@@ -1048,16 +1048,17 @@ namespace RageShowMyLocation
            String speed = "";
            Ped ped = Game.LocalPlayer.Character;
            float speed_meters = ped.Speed;
-           float speed_kmh = (speed_meters * Convert.ToSingle(3.6));
+           double speed_kmh = (Convert.ToDouble(speed_meters) * 3.6);
             if (option_metric == 1)
             {
-                speed = Convert.ToString(speed_kmh);
+                speed_kmh = Math.Round(speed_kmh, 1);
+                speed = Convert.ToString(speed_kmh) + " KMPH";
             }
             else
             {
-                double speed_mph = (speed_kmh * Convert.ToSingle(0.621371192));
+                double speed_mph = (speed_kmh * 0.621371192);
                 speed_mph = Math.Round(speed_mph,1);
-                speed = Convert.ToString(speed_mph);
+                speed = Convert.ToString(speed_mph) + " MPH";
             }
            return speed;
        }
