@@ -188,7 +188,7 @@ namespace RageShowMyLocation
             }
             else if (str.Contains("Baytree Canyon Rd"))
             {
-                if ((pl_pos.X >= -426.0 && pl_pos.Y <= 2123.0) && (pl_pos.X <= 70.0 && pl_pos.Y >= 1698.0))
+                if ((pl_pos.X <= 426.0 && pl_pos.Y <= 2123.0) && (pl_pos.X >= -70.0 && pl_pos.Y >= 1698.0))
                 {
                     ret = 35;
                 }
