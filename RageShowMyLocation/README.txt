@@ -30,6 +30,8 @@ Requirements :
 
 - Rage Plugin Hook 0.32 (from version 0.3.11.2051 including, works also with 0.34)
 
+- Rage Plugin Hook 0.34 (from version 0.3.19.2328 including)
+
 ####################################################################################################################### 
 
 Installation :
