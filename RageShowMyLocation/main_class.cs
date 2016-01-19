@@ -122,7 +122,20 @@ namespace RageShowMyLocation
         public static int GetSpeedLimitINT(String str)
         {
             int ret = 0;
+            Ped ped = Game.LocalPlayer.Character;
+            pl_pos = ped.Position;
             if (str.Contains("Los Santos Freeway") || str.Contains("Los Santos Fwy") || str.Contains("Del Perro") || str.Contains("Olympic") || str.Contains("La Puerta"))
+            {
+                if (str.Contains("City"))
+                {
+                    ret = 45;
+                }
+                else
+                {
+                    ret = 60;
+                }
+            }
+            else if (str.Contains("Great Ocean") || str.Contains("Tongva Dr") || str.Contains("Senora Fwy") || str.Contains("Palomino Fwy") || str.Contains("Senora Freeway") || str.Contains("Palomino Freeway") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga") || str.Contains("68"))
             {
                 if (str.Contains("City"))
                 {
@@ -133,15 +146,41 @@ namespace RageShowMyLocation
                     ret = 50;
                 }
             }
-            else if (str.Contains("Great Ocean") || str.Contains("Tongva Dr") || str.Contains("Senora Fwy") || str.Contains("Palomino Fwy") || str.Contains("Senora Freeway") || str.Contains("Palomino Freeway") || str.Contains("Elysian Fields") || str.Contains("Route") || str.Contains("Droga"))
+            else if (str.Contains("Senora Rd"))
             {
-                if (str.Contains("City"))
+                if (str.Contains("County"))
                 {
-                    ret = 45;
+                    ret = 60;
                 }
                 else
                 {
                     ret = 60;
+                }
+            }
+            else if (str.Contains("Panorama Dr"))
+            {
+                ret = 50;
+            }
+            else if (str.Contains("Joshua Rd"))
+            {
+                if (pl_pos.Y <= 3483.0)
+                {
+                    ret = 50;
+                }
+                else
+                {
+                    ret = 60;
+                }
+            }
+            else if (str.Contains("Baytree Canyon Rd"))
+            {
+                if ((pl_pos.X <= 426.0 && pl_pos.Y <= 2123.0) && (pl_pos.X >= 70.0 && pl_pos.Y >= 1698.0))
+                {
+                    ret = 35;
+                }
+                else
+                {
+                    ret = 50;
                 }
             }
             else if (str.Contains("County"))
