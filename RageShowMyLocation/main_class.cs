@@ -24,6 +24,7 @@ namespace RageShowMyLocation
         private static string option_city_color = "White";
         private static int option_developer = 0;
         private static int option_metric = 0;
+        private static int option_12hourclock = 0;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
 
@@ -95,6 +96,12 @@ namespace RageShowMyLocation
                         index_stop = line.Length - line.IndexOf('=');
                         option_developer = Convert.ToInt32(line.Substring(index_start + 1));
                     }
+                    if (line.Contains("12_hour_clock="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_12hourclock = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
 
                 }
 
@@ -143,7 +150,14 @@ namespace RageShowMyLocation
                 }
                 else
                 {
-                    ret = 50;
+                    ret = 60;
+                }
+                if (str.Contains("68"))
+                {
+                    if (pl_pos.X > 1566.0)
+                    {
+                        ret = 50;
+                    }
                 }
             }
             else if (str.Contains("Senora Rd"))
@@ -245,8 +259,23 @@ namespace RageShowMyLocation
         {
             String ret = "";
             TimeSpan time_mili = World.TimeOfDay;
-            String godz = Convert.ToString(time_mili.Hours);
-            String minuta = Convert.ToString(time_mili.Minutes);
+            int hours = time_mili.Hours;
+            int minutes = time_mili.Minutes;
+            String amPm = "AM";
+            if (option_12hourclock == 1)
+            {
+                if (hours == 0)
+                    hours = 12;
+                else if (hours == 12)
+                    amPm = "PM";
+                else if (hours > 12)
+                {
+                    hours -= 12;
+                    amPm = "PM";
+                }
+            }
+            String godz = Convert.ToString(hours);
+            String minuta = Convert.ToString(minutes);
             if (godz.Length < 2)
             {
                 godz = "0" + godz;
@@ -256,6 +285,10 @@ namespace RageShowMyLocation
                 minuta = "0" + minuta;
             }
             ret = godz + ":" + minuta;
+            if (option_12hourclock == 1)
+            {
+                ret = ret + amPm;
+            }
             return ret;
             
         }
