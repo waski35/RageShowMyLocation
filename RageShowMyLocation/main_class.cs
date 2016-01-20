@@ -25,6 +25,7 @@ namespace RageShowMyLocation
         private static int option_developer = 0;
         private static int option_metric = 0;
         private static int option_12hourclock = 0;
+        private static int option_rect_aroud_text = 0;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
 
@@ -101,6 +102,12 @@ namespace RageShowMyLocation
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
                         option_12hourclock = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("display_box_around_text="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_rect_aroud_text = Convert.ToInt32(line.Substring(index_start + 1));
                     }
 
                 }
@@ -248,10 +255,22 @@ namespace RageShowMyLocation
             }
             
             
+
+
             
             PointF pt = new PointF(option_pos_x, option_pos_y);
             Color text_col = Color.FromName(GetColor(street));
-            eva.Graphics.DrawText(street, option_font_name, option_font_size, pt, text_col);
+
+            
+            SizeF text_rect = new SizeF();
+            text_rect = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+                       
+            SizeF rect_size = new SizeF((text_rect.Width + ((text_rect.Width / street.Length) * 2)), text_rect.Height + (text_rect.Height / 2));
+            PointF pt_rect = new PointF(pt.X + (rect_size.Width / street.Length), pt.Y + (rect_size.Height - (option_font_size / 2)));
+            RectangleF rect = new RectangleF(pt,rect_size);
+
+            eva.Graphics.DrawRectangle(rect, Color.FromArgb(99, Color.Black));
+            eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect, text_col);
 
             
         }
