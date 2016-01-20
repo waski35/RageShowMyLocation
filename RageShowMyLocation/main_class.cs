@@ -26,6 +26,7 @@ namespace RageShowMyLocation
         private static int option_metric = 0;
         private static int option_12hourclock = 0;
         private static int option_rect_aroud_text = 0;
+        private static int option_box_opacity = 100;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
 
@@ -108,6 +109,16 @@ namespace RageShowMyLocation
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
                         option_rect_aroud_text = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("box_around_text_opacity="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_box_opacity = Convert.ToInt32(line.Substring(index_start + 1));
+                        if (option_box_opacity < 0 || option_box_opacity > 255)
+                        {
+                            option_box_opacity = 100;
+                        }
                     }
 
                 }
@@ -271,7 +282,7 @@ namespace RageShowMyLocation
 
             if (option_rect_aroud_text > 0)
             {
-                eva.Graphics.DrawRectangle(rect, Color.FromArgb(99, Color.Black));
+                eva.Graphics.DrawRectangle(rect, Color.FromArgb(option_box_opacity, Color.Black));
                 eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect, text_col);
             }
             else
