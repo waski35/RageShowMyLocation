@@ -269,8 +269,15 @@ namespace RageShowMyLocation
             PointF pt_rect = new PointF(pt.X + ((rect_size.Width / street.Length) / 2), pt.Y + (text_rect.Height / 8));
             RectangleF rect = new RectangleF(pt,rect_size);
 
-            eva.Graphics.DrawRectangle(rect, Color.FromArgb(99, Color.Black));
-            eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect, text_col);
+            if (option_rect_aroud_text > 0)
+            {
+                eva.Graphics.DrawRectangle(rect, Color.FromArgb(99, Color.Black));
+                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect, text_col);
+            }
+            else
+            {
+                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt, text_col);
+            }
 
             
         }
