@@ -13,9 +13,11 @@ Plugin displays speed limit at current street, it's based on street location and
 
 Plugin also displays current time in game, current player speed displayed in MPH or KMPH depending on which system player choosen in options, and direction / heading.
 
-There's ability to configure plugin behaviour via "RageShowMyLocation.ini" file, which includes : metric/imperial units switch, position of text on screen, font size, font family/name - this can be any system font installed in Windows.
+There's ability to configure plugin behaviour via "RageShowMyLocation.ini" file, which includes : metric/imperial units switch, position of text on screen, font size, font family/name - this can be any system font installed in Windows, display text inside black box (with adjustable opacity) or not, for all those patrols on suunny wether.
 
 There's API for plugin makers in test phase as well allowing to obtain speed limit for given street (name, location) - see develpment forum thread for details - I'll post there some examples.
+
+Explanation of plugin's options is inside *.ini file.
 
 ########################################################################################################################
 
