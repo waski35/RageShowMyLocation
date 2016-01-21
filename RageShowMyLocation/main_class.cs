@@ -33,8 +33,8 @@ namespace RageShowMyLocation
        
         public static void Main()
         {
-                      
-            Game.FrameRender += new EventHandler<GraphicsEventArgs>((obj,graf_ev) => DisplayPos(obj,graf_ev));
+
+            Game.RawFrameRender += new EventHandler<GraphicsEventArgs>((obj, graf_ev) => DisplayPos(obj, graf_ev));
             Game.LogTrivial(plug_ver + " : Added event handler for FrameRender");
             ReadSettings();
             Game.LogTrivial(plug_ver + " : Plugin loaded !");
