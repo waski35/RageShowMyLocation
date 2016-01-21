@@ -29,6 +29,14 @@ namespace RageShowMyLocation
         private static int option_box_opacity = 100;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
+        private static PointF pt;
+        private static Color text_col;
+        private static SizeF text_rect;
+        private static string street = "";
+        private static SizeF rect_size;
+        private static PointF pt_rect;
+        private static RectangleF rect;
+    
 
        
         public static void Main()
@@ -41,6 +49,7 @@ namespace RageShowMyLocation
 
             while (true)
             {
+                PrepareStreet();
                 GameFiber.Yield();
             }
                             
@@ -250,9 +259,25 @@ namespace RageShowMyLocation
         public static void DisplayPos(System.Object obj, GraphicsEventArgs eva)
         {
            
+            
+
+            if (option_rect_aroud_text > 0)
+            {
+                eva.Graphics.DrawRectangle(rect, Color.FromArgb(option_box_opacity, Color.Black));
+                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect, text_col);
+            }
+            else
+            {
+                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt, text_col);
+            }
+
+            
+        }
+        private static void PrepareStreet()
+        {
             Ped ped = Game.LocalPlayer.Character;
             pl_pos = ped.Position;
-            String street = Rage.World.GetStreetName(pl_pos);
+            street = Rage.World.GetStreetName(pl_pos);
 
             //street = street + ", " + GetDistrict(street);
             street = street + ", " + GetCounty(street);
@@ -269,28 +294,16 @@ namespace RageShowMyLocation
 
 
             
-            PointF pt = new PointF(option_pos_x, option_pos_y);
-            Color text_col = Color.FromName(GetColor(street));
+            pt = new PointF(option_pos_x, option_pos_y);
+            text_col = Color.FromName(GetColor(street));
 
             
-            SizeF text_rect = new SizeF();
+            text_rect = new SizeF();
             text_rect = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
                        
-            SizeF rect_size = new SizeF((text_rect.Width + ((text_rect.Width / street.Length) * 2)), text_rect.Height + (text_rect.Height / 2));
-            PointF pt_rect = new PointF(pt.X + ((rect_size.Width / street.Length) / 2), pt.Y + (text_rect.Height / 8));
-            RectangleF rect = new RectangleF(pt,rect_size);
-
-            if (option_rect_aroud_text > 0)
-            {
-                eva.Graphics.DrawRectangle(rect, Color.FromArgb(option_box_opacity, Color.Black));
-                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect, text_col);
-            }
-            else
-            {
-                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt, text_col);
-            }
-
-            
+            rect_size = new SizeF((text_rect.Width + ((text_rect.Width / street.Length) * 2)), text_rect.Height + (text_rect.Height / 2));
+            pt_rect = new PointF(pt.X + ((rect_size.Width / street.Length) / 2), pt.Y + (text_rect.Height / 8));
+            rect = new RectangleF(pt,rect_size);
         }
         private static String GetCurTime()
         {
