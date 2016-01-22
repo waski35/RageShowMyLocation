@@ -101,7 +101,7 @@ namespace RageShowMyLocation
                         index_stop = line.Length - line.IndexOf('=');
                         option_metric = Convert.ToInt32(line.Substring(index_start + 1));
                     }
-                    if (line.Contains("developer_mode="))
+                    if (line.Contains("do_not_touch_this="))
                     {
                         index_start = line.IndexOf('=');
                         index_stop = line.Length - line.IndexOf('=');
@@ -285,7 +285,7 @@ namespace RageShowMyLocation
             street = street + " - Time - " + GetCurTime();
             street = street + " | " + GetDirection() + " | ";
             street = street + "Speed : " + GetPlayerSpeed();
-            if (option_developer > 0)
+            if (option_developer == 35)
             {
                 street = street + ", POS - X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y) + ", Z : " + Convert.ToString(pl_pos.Z);
             }
