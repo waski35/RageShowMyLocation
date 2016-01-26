@@ -27,6 +27,7 @@ namespace RageShowMyLocation
         private static int option_12hourclock = 0;
         private static int option_rect_aroud_text = 0;
         private static int option_box_opacity = 100;
+        private static int option_show_cords = 0;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
         private static PointF pt;
@@ -128,6 +129,13 @@ namespace RageShowMyLocation
                         {
                             option_box_opacity = 100;
                         }
+                    }
+                    if (line.Contains("show_coords="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_show_cords = Convert.ToInt32(line.Substring(index_start + 1));
+                       
                     }
 
                 }
@@ -281,13 +289,14 @@ namespace RageShowMyLocation
 
             //street = street + ", " + GetDistrict(street);
             street = street + ", " + GetCounty(street);
+            street = street + ", " + GetPlayerZone();
             street = street + ", " + GetSpeedLimit(street);
             street = street + " - Time - " + GetCurTime();
             street = street + " | " + GetDirection() + " | ";
             street = street + "Speed : " + GetPlayerSpeed();
-            if (option_developer == 35)
+            if (option_developer == 35 || option_show_cords > 0)
             {
-                street = street + ", POS - X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y) + ", Z : " + Convert.ToString(pl_pos.Z);
+                street = street + ", POS X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y) + ", Z : " + Convert.ToString(pl_pos.Z);
             }
             
             
@@ -1184,6 +1193,23 @@ namespace RageShowMyLocation
             }
            return speed;
        }
+        private static String GetPlayerZone()
+        {
+            String zone = "";
+            Rage.Native.NativeArgument[] func_args = new Rage.Native.NativeArgument[3];
+            func_args[0] = pl_pos.X;
+            func_args[1] = pl_pos.Y;
+            func_args[2] = pl_pos.Z;
+
+            Encoding enc = Encoding.Unicode;
+
+            
+
+            Byte[] func_ret = (Byte[])Rage.Native.NativeFunction.CallByName("GET_NAME_OF_ZONE", typeof(Byte[]),func_args);
+            zone = enc.GetString(func_ret);
+
+            return zone;
+        }
 
     }
 }
