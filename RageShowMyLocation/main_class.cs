@@ -28,6 +28,10 @@ namespace RageShowMyLocation
         private static int option_rect_aroud_text = 0;
         private static int option_box_opacity = 100;
         private static int option_show_cords = 0;
+        private static int option_show_zone = 0;
+        private static int option_show_player_speed = 0;
+        private static int option_show_time = 0;
+        private static int option_show_heading = 9;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
         private static PointF pt;
@@ -136,6 +140,34 @@ namespace RageShowMyLocation
                         index_stop = line.Length - line.IndexOf('=');
                         option_show_cords = Convert.ToInt32(line.Substring(index_start + 1));
                        
+                    }
+                    if (line.Contains("show_zone="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_show_zone = Convert.ToInt32(line.Substring(index_start + 1));
+
+                    }
+                    if (line.Contains("show_time="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_show_time = Convert.ToInt32(line.Substring(index_start + 1));
+
+                    }
+                    if (line.Contains("show_player_speed="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_show_player_speed = Convert.ToInt32(line.Substring(index_start + 1));
+
+                    }
+                    if (line.Contains("show_heading="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_show_heading = Convert.ToInt32(line.Substring(index_start + 1));
+
                     }
 
                 }
@@ -289,11 +321,25 @@ namespace RageShowMyLocation
 
             //street = street + ", " + GetDistrict(street);
             street = street + ", " + GetCounty(street);
-            street = street + ", " + GetPlayerZone();
+            if (option_show_zone > 0)
+            {
+                street = street + ", " + GetPlayerZone();
+            }
+            
             street = street + ", " + GetSpeedLimit(street);
-            street = street + " - Time - " + GetCurTime();
-            street = street + " | " + GetDirection() + " | ";
-            street = street + "Speed : " + GetPlayerSpeed();
+            
+            if (option_show_time > 0)
+            {
+                street = street + " - Time - " + GetCurTime();
+            }
+            if (option_show_heading > 0)
+            {
+                street = street + " | " + GetDirection() + " | ";
+            }
+            if (option_show_player_speed > 0)
+            {
+                street = street + "Speed : " + GetPlayerSpeed();
+            }
             if (option_developer == 35 || option_show_cords > 0)
             {
                 street = street + ", POS X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y) + ", Z : " + Convert.ToString(pl_pos.Z);
@@ -1196,6 +1242,7 @@ namespace RageShowMyLocation
         private static String GetPlayerZone()
         {
             String zone = "";
+            
             Rage.Native.NativeArgument[] func_args = new Rage.Native.NativeArgument[3];
             func_args[0] = pl_pos.X;
             func_args[1] = pl_pos.Y;
