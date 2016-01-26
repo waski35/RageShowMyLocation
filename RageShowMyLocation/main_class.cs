@@ -1254,8 +1254,197 @@ namespace RageShowMyLocation
 
             string func_ret = (string)Rage.Native.NativeFunction.CallByHash(0xCD90657D4C30E1CA,typeof(string), func_args);
             //zone = enc.GetString(func_ret);
-            zone = func_ret;
+
+            zone = Translate_zone(func_ret);
+
+
             return zone;
+        }
+        private static String Translate_zone(string zone_op)
+        {
+            switch (zone_op)
+            {
+                case "AIRP":
+                    return "Los Santos International Airport";
+                case "ALAMO":
+                    return "The Alamo Sea";
+                case "ALTA":
+                    return "Alta";
+                case "ARMYB":
+                    return "Fort Zancudo";
+                case "BANHAMC":
+                    return "Banham Canyon";
+                case "BANNING":
+                    return "Banning";
+                case "BEACH":
+                    return "Vespucci Beach";
+                case "BHAMCA":
+                    return "Banham Canyon Drive";
+                case "BRADP":
+                    return "Braddock Pass";
+                case "BRADT":
+                    return "Braddock Tunnel";
+                case "BURTON":
+                    return "Burton";
+                case "CALAFB":
+                    return "Calafia Bridge";
+                case "CANNY":
+                    return "Raton Canyon";
+                case "CCREAK":
+                    return "Cassidy Creek";
+                case "CHAMH":
+                    return "Chamberlain Hills";
+                case "CHIL":
+                    return "Vinewood Hills";
+                case "CHU":
+                    return "Chumash";
+                case "CMSW":
+                    return "Chiliad Mountain State Wilderness";
+                case "CYPRE":
+                    return "Cypress Flats";
+                case "DAVIS":
+                    return "Davis";
+                case "DELBE":
+                    return "Del Perro Beach";
+                case "DELPE":
+                    return "Del Perro";
+                case "DELSOL":
+                    return "Puerto Del Sol";
+                case "DESRT":
+                    return "Grand Senora Desert";
+                case "DOWNT":
+                    return "Downtown";
+                case "DTVINE":
+                    return "Downtown Vinewood";
+                case "EAST_V":
+                    return "East Vinewood";
+                case "EBURO":
+                    return "El Burro Heights";
+                case "ELGORL":
+                    return "El Gordo Lighthouse";
+                case "ELYSIAN":
+                    return "Elysian Island";
+                case "GALFISH":
+                    return "Galilee";
+                case "golf":
+                    return "GWC and Golfing Society";
+                case "GRAPES":
+                    return "Grapeseed";
+                case "GREATC":
+                    return "Great Chaparral";
+                case "HARMO":
+                    return "Harmony";
+                case "HAWICK":
+                    return "Hawick";
+                case "HORS":
+                    return "Vinewood Racetrack";
+                case "HUMLAB":
+                    return "Humane Labs and Research";
+                case "JAIL":
+                    return "Bolingbroke Penitentiary";
+                case "KOREAT":
+                    return "Little Seoul";
+                case "LACT":
+                    return "Land Act Reservoir";
+                case "LAGO":
+                    return "Lago Zancudo";
+                case "LDAM":
+                    return "Land Act Dam";
+                case "LEGSQU":
+                    return "Legion Square";
+                case "LMESA":
+                    return "La Mesa";
+                case "LOSPUER":
+                    return "La Puerta";
+                case "MIRR":
+                    return "Mirror Park";
+                case "MORN":
+                    return "Morningwood";
+                case "MOVIE":
+                    return "Richards Majestic";
+                case "MTCHIL":
+                    return "Mount Chiliad";
+                case "MTGORDO":
+                    return "Mount Gordo";
+                case "MTJOSE":
+                    return "Mount Josiah";
+                case "MURRI":
+                    return "Murrieta Heights";
+                case "NCHU":
+                    return "North Chumash";
+                case "NOOSE":
+                    return "NOOSE HQ";
+                case "OCEANA":
+                    return "Pacific Ocean";
+                case "PALCOV":
+                    return "Paleto Cove";
+                case "PALETO":
+                    return "Paleto Bay";
+                case "PALFOR":
+                    return "Paleto Forest";
+                case "PALHIGH":
+                    return "Palomino Highlands";
+                case "PALMPOW":
+                    return "Palmer-Taylor Power Station";
+                case "PBLUFF":
+                    return "Pacific Bluffs";
+                case "PBOX":
+                    return "Pillbox Hill";
+                case "PROCOB":
+                    return "Procopio Beach";
+                case "RANCHO":
+                    return "Rancho";
+                case "RGLEN":
+                    return "Richman Glen";
+                case "RICHM":
+                    return "Richman";
+                case "ROCKF":
+                    return "Rockford Hills";
+                case "RTRAK":
+                    return "Redwood Lights Track";
+                case "SanAnd":
+                    return "San Andreas";
+                case "SANCHIA":
+                    return "San Chianski Mountain Range";
+                case "SANDY":
+                    return "Sandy Shores";
+                case "SKID":
+                    return "Mission Row";
+                case "SLAB":
+                    return "Stab City";
+                case "STAD":
+                    return "Maze Bank Arena";
+                case "STRAW":
+                    return "Strawberry";
+                case "TATAMO":
+                    return "Tataviam Mountains";
+                case "TERMINA":
+                    return "Terminal";
+                case "TEXTI":
+                    return "Textile City";
+                case "TONGVAH":
+                    return "Tongva Hills";
+                case "TONGVAV":
+                    return "Tongva Valley";
+                case "VCANA":
+                    return "Vespucci Canals";
+                case "VESP":
+                    return "Vespucci";
+                case "VINE":
+                    return "Vinewood";
+                case "WINDF":
+                    return "RON Alternates Wind Farm";
+                case "WVINE":
+                    return "West Vinewood";
+                case "ZANCUDO":
+                    return "Zancudo River";
+                case "ZP_ORT":
+                    return "Port of South Los Santos";
+                case "ZQ_UAR":
+                    return "Davis Quartz";
+                default:
+                    return String.Empty;
+            }
         }
 
     }
