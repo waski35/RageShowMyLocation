@@ -1203,11 +1203,11 @@ namespace RageShowMyLocation
 
             Encoding enc = Encoding.Unicode;
 
-            
 
-            Byte[] func_ret = (Byte[])Rage.Native.NativeFunction.CallByName("GET_NAME_OF_ZONE", typeof(Byte[]),func_args);
-            zone = enc.GetString(func_ret);
 
+            string func_ret = (string)Rage.Native.NativeFunction.CallByHash(0xCD90657D4C30E1CA,typeof(string), func_args);
+            //zone = enc.GetString(func_ret);
+            zone = func_ret;
             return zone;
         }
 
