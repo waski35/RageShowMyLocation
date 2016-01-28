@@ -542,7 +542,8 @@ namespace RageShowMyLocation
 
             
 
-            text_col_all = Color.FromName(GetColor(street));
+            text_col_street = Color.FromName(GetColor(street));
+            text_col_all = Color.White;
 
             pt_street = new PointF(option_pos_x, option_pos_y);
             text_rect_street = new SizeF();
