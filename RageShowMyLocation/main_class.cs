@@ -18,7 +18,7 @@ namespace RageShowMyLocation
         public static int option_pos_x = 500;
         public static int option_pos_y = 0;
         private static string option_font_name = "Arial";
-        private static int option_font_size = 14;
+        public static int option_font_size = 14;
         private static string option_interstate_color = "Red";
         private static string option_route_color = "Yellow";
         private static string option_city_color = "White";
@@ -33,7 +33,7 @@ namespace RageShowMyLocation
         private static int option_show_time = 0;
         private static int option_show_heading = 9;
         private static Rage.Graphics graf;
-        private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
+        public static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
         private static Color text_col_all;
         private static string street = "";
         private static string heading = "";
