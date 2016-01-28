@@ -41,12 +41,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RAGENativeUI">
+      <HintPath>..\..\RAGENativeUI-1.2\Source\bin\Release\RAGENativeUI.dll</HintPath>
+    </Reference>
     <Reference Include="RagePluginHookSDK">
       <HintPath>I:\DOWNLOADS - GAMES\DODATKI\gta v\LSPDFR\ragehook\RAGEPluginHook_0_34_862_6641_ALPHA\SDK\RagePluginHookSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

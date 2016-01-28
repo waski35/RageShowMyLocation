@@ -15,8 +15,8 @@ namespace RageShowMyLocation
     {
         private static Rage.Vector3 pl_pos = new Vector3(0,0,0);
         private static String Loc = "";
-        private static int option_pos_x = 500;
-        private static int option_pos_y = 0;
+        public static int option_pos_x = 500;
+        public static int option_pos_y = 0;
         private static string option_font_name = "Arial";
         private static int option_font_size = 14;
         private static string option_interstate_color = "Red";
@@ -34,13 +34,78 @@ namespace RageShowMyLocation
         private static int option_show_heading = 9;
         private static Rage.Graphics graf;
         private static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
-        private static PointF pt;
-        private static Color text_col;
-        private static SizeF text_rect;
+        private static Color text_col_all;
         private static string street = "";
-        private static SizeF rect_size;
-        private static PointF pt_rect;
-        private static RectangleF rect;
+        private static string heading = "";
+        private static string time = "";
+        private static string speed_lim = "";
+        private static string player_speed = "";
+        private static string coords = "";
+        private static Color text_col_street;
+
+        private static SizeF rect_size_street;
+        private static PointF pt_rect_street;
+        private static RectangleF rect_street;
+        private static PointF pt_street;
+        private static SizeF text_rect_street;
+
+        private static SizeF rect_size_heading;
+        private static PointF pt_rect_heading;
+        private static RectangleF rect_heading;
+        private static PointF pt_heading;
+        private static Color text_col_heading;
+        private static SizeF text_rect_heading;
+
+        private static SizeF rect_size_time;
+        private static PointF pt_rect_time;
+        private static RectangleF rect_time;
+        private static PointF pt_time;
+        private static Color text_col_time;
+        private static SizeF text_rect_time;
+
+        private static SizeF rect_size_sl;
+        private static PointF pt_rect_sl;
+        private static RectangleF rect_sl;
+        private static PointF pt_sl;
+        private static Color text_col_sl;
+        private static SizeF text_rect_sl;
+
+        private static SizeF rect_size_cs;
+        private static PointF pt_rect_cs;
+        private static RectangleF rect_cs;
+        private static PointF pt_cs;
+        private static Color text_col_cs;
+        private static SizeF text_rect_cs;
+
+        private static SizeF rect_size_coords;
+        private static PointF pt_rect_coords;
+        private static RectangleF rect_coords;
+        private static PointF pt_coords;
+        private static Color text_col_coords;
+        private static SizeF text_rect_coords;
+
+
+        
+        public static int option_pos_x_heading = 300;
+        public static int option_pos_y_heading = 0;
+
+        public static int option_pos_x_time = 350;
+        public static int option_pos_y_time = 0;
+
+        public static int option_pos_x_sl = 400;
+        public static int option_pos_y_sl = 0;
+
+        public static int option_pos_x_cs = 500;
+        public static int option_pos_y_cs = 0;
+
+        public static int option_pos_x_coords = 550;
+        public static int option_pos_y_coords = 0;
+
+        public static int option_font_size_heading = 14;
+        public static int option_font_size_time = 14;
+        public static int option_font_size_sl = 14;
+        public static int option_font_size_cs = 14;
+        public static int option_font_size_coords = 14;
     
 
        
@@ -48,9 +113,12 @@ namespace RageShowMyLocation
         {
 
             Game.RawFrameRender += new EventHandler<GraphicsEventArgs>((obj, graf_ev) => DisplayPos(obj, graf_ev));
+            Game.FrameRender += PositionControl.Process;
             Game.LogTrivial(plug_ver + " : Added event handler for FrameRender");
             ReadSettings();
             Game.LogTrivial(plug_ver + " : Plugin loaded !");
+
+            PositionControl.InitMenus(); 
 
             while (true)
             {
@@ -59,6 +127,11 @@ namespace RageShowMyLocation
             }
                             
         }
+        public static void Reload()
+        {
+            ReadSettings();
+        }
+
         private static void ReadSettings()
         {
             string line = "";
@@ -88,6 +161,72 @@ namespace RageShowMyLocation
                         index_stop = line.Length - line.IndexOf('=');
                         option_pos_y = Convert.ToInt32(line.Substring(index_start + 1));
                     }
+
+                    if (line.Contains("pos_x_heading="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_x_heading = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("pos_y_heading="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_y_heading = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+
+                    if (line.Contains("pos_x_time="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_x_time = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("pos_y_time="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_y_time = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+
+                    if (line.Contains("pos_x_playerspeed="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_x_cs = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("pos_y_playerspeed="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_y_cs = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+
+                    if (line.Contains("pos_x_speedlimit="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_x_sl = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("pos_y_speedlimit="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_y_sl = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+
+                    if (line.Contains("pos_x_coords="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_x_coords = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("pos_y_coords="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_pos_y_coords = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+
                     if (line.Contains("font_name="))
                     {
                         index_start = line.IndexOf('=');
@@ -100,6 +239,39 @@ namespace RageShowMyLocation
                         index_stop = line.Length - line.IndexOf('=');
                         option_font_size = Convert.ToInt32(line.Substring(index_start + 1));
                     }
+
+                    if (line.Contains("font_size_heading="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_font_size_heading = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("font_size_time="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_font_size_time = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("font_size_player_speed="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_font_size_cs = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("font_size_speed_limit="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_font_size_sl = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+                    if (line.Contains("font_size_coords="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_font_size_coords = Convert.ToInt32(line.Substring(index_start + 1));
+                    }
+
+
                     if (line.Contains("metric_units="))
                     {
                         index_start = line.IndexOf('=');
@@ -303,12 +475,32 @@ namespace RageShowMyLocation
 
             if (option_rect_aroud_text > 0)
             {
-                eva.Graphics.DrawRectangle(rect, Color.FromArgb(option_box_opacity, Color.Black));
-                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect, text_col);
+                eva.Graphics.DrawRectangle(rect_street, Color.FromArgb(option_box_opacity, Color.Black));
+                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect_street, text_col_street);
+
+                eva.Graphics.DrawRectangle(rect_heading, Color.FromArgb(option_box_opacity, Color.Black));
+                eva.Graphics.DrawText(heading, option_font_name, option_font_size, pt_rect_heading, text_col_all);
+                
+                eva.Graphics.DrawRectangle(rect_time, Color.FromArgb(option_box_opacity, Color.Black));
+                eva.Graphics.DrawText(time, option_font_name, option_font_size, pt_rect_time, text_col_all);
+                
+                eva.Graphics.DrawRectangle(rect_sl, Color.FromArgb(option_box_opacity, Color.Black));
+                eva.Graphics.DrawText(speed_lim, option_font_name, option_font_size, pt_rect_sl, text_col_all);
+                
+                eva.Graphics.DrawRectangle(rect_cs, Color.FromArgb(option_box_opacity, Color.Black));
+                eva.Graphics.DrawText(player_speed, option_font_name, option_font_size, pt_rect_cs, text_col_all);
+                
+                eva.Graphics.DrawRectangle(rect_coords, Color.FromArgb(option_box_opacity, Color.Black));
+                eva.Graphics.DrawText(coords, option_font_name, option_font_size, pt_rect_coords, text_col_all);
             }
             else
             {
-                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt, text_col);
+                eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_street, text_col_street);
+                eva.Graphics.DrawText(heading, option_font_name, option_font_size, pt_heading, text_col_all);
+                eva.Graphics.DrawText(speed_lim, option_font_name, option_font_size, pt_sl, text_col_all);
+                eva.Graphics.DrawText(time, option_font_name, option_font_size, pt_time, text_col_all);
+                eva.Graphics.DrawText(player_speed, option_font_name, option_font_size, pt_cs, text_col_all);
+                eva.Graphics.DrawText(coords, option_font_name, option_font_size, pt_coords, text_col_all);
             }
 
             
@@ -326,39 +518,81 @@ namespace RageShowMyLocation
                 street = street + ", " + GetPlayerZone();
             }
             
-            street = street + ", " + GetSpeedLimit(street);
+            speed_lim = " " + GetSpeedLimit(street);
             
             if (option_show_time > 0)
             {
-                street = street + " - Time - " + GetCurTime();
+                time = " - Time - " + GetCurTime();
             }
             if (option_show_heading > 0)
             {
-                street = street + " | " + GetDirection() + " | ";
+                heading = " | " + GetDirection() + " | ";
             }
             if (option_show_player_speed > 0)
             {
-                street = street + "Speed : " + GetPlayerSpeed();
+                player_speed = " Speed : " + GetPlayerSpeed();
             }
             if (option_developer == 35 || option_show_cords > 0)
             {
-                street = street + ", POS X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y) + ", Z : " + Convert.ToString(pl_pos.Z);
+                coords = " POS X : " + Convert.ToString(pl_pos.X) + ", Y : " + Convert.ToString(pl_pos.Y) + ", Z : " + Convert.ToString(pl_pos.Z);
             }
             
             
 
 
             
-            pt = new PointF(option_pos_x, option_pos_y);
-            text_col = Color.FromName(GetColor(street));
 
-            
-            text_rect = new SizeF();
-            text_rect = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+            text_col_all = Color.FromName(GetColor(street));
+
+            pt_street = new PointF(option_pos_x, option_pos_y);
+            text_rect_street = new SizeF();
+            text_rect_street = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
                        
-            rect_size = new SizeF((text_rect.Width + ((text_rect.Width / street.Length) * 2)), text_rect.Height + (text_rect.Height / 2));
-            pt_rect = new PointF(pt.X + ((rect_size.Width / street.Length) / 2), pt.Y + (text_rect.Height / 8));
-            rect = new RectangleF(pt,rect_size);
+            rect_size_street = new SizeF((text_rect_street.Width + ((text_rect_street.Width / street.Length) * 2)), text_rect_street.Height + (text_rect_street.Height / 2));
+            pt_rect_street = new PointF(pt_street.X + ((rect_size_street.Width / street.Length) / 2), pt_street.Y + (text_rect_street.Height / 8));
+            rect_street = new RectangleF(pt_street,rect_size_street);
+
+            pt_heading = new PointF(option_pos_x_heading, option_pos_y_heading);
+            text_rect_heading = new SizeF();
+            text_rect_heading = Rage.Graphics.MeasureText(heading, option_font_name, option_font_size);
+
+            rect_size_heading = new SizeF((text_rect_heading.Width + ((text_rect_heading.Width / heading.Length) * 2)), text_rect_heading.Height + (text_rect_heading.Height / 2));
+            pt_rect_heading = new PointF(pt_heading.X + ((rect_size_heading.Width / heading.Length) / 2), pt_heading.Y + (text_rect_heading.Height / 8));
+            rect_heading = new RectangleF(pt_heading, rect_size_heading);
+
+            pt_time = new PointF(option_pos_x_time, option_pos_y_time);
+            text_rect_time = new SizeF();
+            text_rect_time = Rage.Graphics.MeasureText(time, option_font_name, option_font_size);
+
+            rect_size_time = new SizeF((text_rect_time.Width + ((text_rect_time.Width / time.Length) * 2)), text_rect_time.Height + (text_rect_time.Height / 2));
+            pt_rect_time = new PointF(pt_time.X + ((rect_size_time.Width / time.Length) / 2), pt_time.Y + (text_rect_time.Height / 8));
+            rect_time = new RectangleF(pt_time, rect_size_time);
+
+            pt_sl = new PointF(option_pos_x_sl, option_pos_y_sl);
+            text_rect_sl = new SizeF();
+            text_rect_sl = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+
+            rect_size_sl = new SizeF((text_rect_sl.Width + ((text_rect_sl.Width / speed_lim.Length) * 2)), text_rect_sl.Height + (text_rect_sl.Height / 2));
+            pt_rect_sl = new PointF(pt_sl.X + ((rect_size_sl.Width / speed_lim.Length) / 2), pt_sl.Y + (text_rect_sl.Height / 8));
+            rect_sl = new RectangleF(pt_sl, rect_size_sl);
+
+            pt_cs = new PointF(option_pos_x_cs, option_pos_y_cs);
+            text_rect_cs = new SizeF();
+            text_rect_cs = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+
+            rect_size_cs = new SizeF((text_rect_cs.Width + ((text_rect_cs.Width / player_speed.Length) * 2)), text_rect_cs.Height + (text_rect_cs.Height / 2));
+            pt_rect_cs = new PointF(pt_cs.X + ((rect_size_cs.Width / player_speed.Length) / 2), pt_cs.Y + (text_rect_cs.Height / 8));
+            rect_cs = new RectangleF(pt_cs, rect_size_cs);
+
+            pt_coords = new PointF(option_pos_x_coords, option_pos_y_coords);
+            text_rect_coords = new SizeF();
+            text_rect_coords = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+
+            rect_size_coords = new SizeF((text_rect_coords.Width + ((text_rect_coords.Width / coords.Length) * 2)), text_rect_coords.Height + (text_rect_coords.Height / 2));
+            pt_rect_coords = new PointF(pt_coords.X + ((rect_size_coords.Width / coords.Length) / 2), pt_coords.Y + (text_rect_coords.Height / 8));
+            rect_coords = new RectangleF(pt_coords, rect_size_coords);
+
+
         }
         private static String GetCurTime()
         {
@@ -1260,6 +1494,19 @@ namespace RageShowMyLocation
 
             return zone;
         }
+
+        private static void Calculate_pos_text_box(int pos_x, int pos_y)
+        {
+            pt_street = new PointF(pos_x, pos_y);
+            text_rect_street = new SizeF();
+            text_rect_street = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+
+            rect_size_street = new SizeF((text_rect_street.Width + ((text_rect_street.Width / street.Length) * 2)), text_rect_street.Height + (text_rect_street.Height / 2));
+            pt_rect_street = new PointF(pt_street.X + ((rect_size_street.Width / street.Length) / 2), pt_street.Y + (text_rect_street.Height / 8));
+            rect_street = new RectangleF(pt_street, rect_size_street);
+
+        }
+
         private static String Translate_zone(string zone_op)
         {
             switch (zone_op)
