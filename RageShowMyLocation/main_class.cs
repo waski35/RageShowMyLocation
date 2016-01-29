@@ -1694,6 +1694,74 @@ namespace RageShowMyLocation
                     return String.Empty;
             }
         }
+        public static void SaveSettings()
+        {
+
+            string line = "";
+            string path = Directory.GetCurrentDirectory();
+            path = path + "\\Plugins\\RageShowMyLocation.ini";
+            if (File.Exists(path))
+            {
+                Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : found settings file, saving settings.");
+                Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : Settings File path : " + path);
+                System.IO.FileStream settingsfile = new FileStream(path, FileMode.CreateNew, FileAccess.ReadWrite);
+                System.IO.StreamWriter file_w = new StreamWriter(settingsfile);
+                
+                    
+                file_w.WriteLine("// This is settings file for RageShowMyLocation Plugin");
+                file_w.WriteLine("//");
+                file_w.WriteLine("// Settings Explanation :");
+                file_w.WriteLine("// pos_x, pos _y - screen position in pixels where text will be displayed, put here an integer, for each axis, x = 0 and y = 0 means upper left corner o screen,");
+                file_w.WriteLine("// font_name - any installed in Windows system font_name,");
+                file_w.WriteLine("// font_size - size of text in points,");
+                file_w.WriteLine("// metric_units - set 0 to use imperial units, set 1 to use metric units,");
+                file_w.WriteLine("// 12_hour_clock - set to 0 to use 24 hour clock, set to 1 to use 12 hour clock,");
+                file_w.WriteLine("// display_box_around_text - set to 0 to disable, set to 1 to enable box around plugin's text,");
+                file_w.WriteLine("// box_around_text_opacity - correct values are from 0 to 255. 0 means fully transparent, 255 means fully opaque. Placing incorrect value will cause plugin to use default (100),");
+                file_w.WriteLine("// show_coords - set to 1 to display current (x,y,z) coordinates of player in game world, set to 0 to do not display this information,");
+                file_w.WriteLine("// show_heading - set to 0 to not display heading, set to 1 to display it,");
+                file_w.WriteLine("// show_player_speed - set to 0 to not display player current speed, or to 1 to display it,");
+                file_w.WriteLine("// show_time - set to 0 to not display curent time in game, or to 1 to display it,");
+                file_w.WriteLine("// show_zone - set to 0 to not display curent zone, or to 1 to display it (option shows raw data, a the moment)");
+                file_w.WriteLine("//");
+                file_w.WriteLine("//");
+                file_w.WriteLine("pos_x=" + Convert.ToString(RageShowMyLocationClass.option_pos_x));
+                file_w.WriteLine("pos_y=" + Convert.ToString(RageShowMyLocationClass.option_pos_y));
+                file_w.WriteLine("pos_x_heading=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_heading));
+                file_w.WriteLine("pos_y_heading=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_heading));
+                file_w.WriteLine("pos_x_time=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_time));
+                file_w.WriteLine("pos_y_time=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_time));
+                file_w.WriteLine("pos_x_playerspeed=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_cs));
+                file_w.WriteLine("pos_y_playerspeed=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_cs));
+                file_w.WriteLine("pos_x_speedlimit=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_sl));
+                file_w.WriteLine("pos_y_speedlimit=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_sl));
+                file_w.WriteLine("pos_x_coords=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_coords));
+                file_w.WriteLine("pos_y_coords=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_coords));
+                file_w.WriteLine("font_size=" + Convert.ToString(RageShowMyLocationClass.option_font_size));
+                file_w.WriteLine("font_size_heading=" + Convert.ToString(RageShowMyLocationClass.option_font_size_heading));
+                file_w.WriteLine("font_size_time=" + Convert.ToString(RageShowMyLocationClass.option_font_size_time));
+                file_w.WriteLine("font_size_player_speed=" + Convert.ToString(RageShowMyLocationClass.option_font_size_cs));
+                file_w.WriteLine("font_size_speed_limit=" + Convert.ToString(RageShowMyLocationClass.option_font_size_sl));
+                file_w.WriteLine("font_size_coords=" + Convert.ToString(RageShowMyLocationClass.option_font_size_coords));
+                file_w.WriteLine("font_name=" + Convert.ToString(RageShowMyLocationClass.option_font_name));
+                file_w.WriteLine("metric_units=" + Convert.ToString(RageShowMyLocationClass.option_metric));
+                file_w.WriteLine("12_hour_clock=" + Convert.ToString(RageShowMyLocationClass.option_12hourclock));
+                file_w.WriteLine("display_box_around_text=" + Convert.ToString(RageShowMyLocationClass.option_rect_aroud_text));
+                file_w.WriteLine("box_around_text_opacity=" + Convert.ToString(RageShowMyLocationClass.option_box_opacity));
+                file_w.WriteLine("show_coords=" + Convert.ToString(RageShowMyLocationClass.option_show_cords));
+                file_w.WriteLine("show_heading=" + Convert.ToString(RageShowMyLocationClass.option_show_heading));
+                file_w.WriteLine("show_player_speed=" + Convert.ToString(RageShowMyLocationClass.option_show_player_speed));
+                file_w.WriteLine("show_time=" + Convert.ToString(RageShowMyLocationClass.option_show_time));
+                file_w.WriteLine("show_zone=" + Convert.ToString(RageShowMyLocationClass.option_show_zone));
+                file_w.WriteLine("//////  this should allways be 0 - its for testing purposes, setting it to other values may cause strange things to happen");
+                file_w.WriteLine("do_not_touch_this=" + Convert.ToString(RageShowMyLocationClass.option_developer));
+
+                file_w.Close();
+            }
+
+
+            RageShowMyLocationClass.Reload();
+        }
 
     }
 }

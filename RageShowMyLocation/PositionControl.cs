@@ -237,7 +237,7 @@ namespace RageShowMyLocation
                 RageShowMyLocation.RageShowMyLocationClass.option_pos_x -= 5;
             }
 
-            SaveSettings();
+            RageShowMyLocationClass.SaveSettings();
 
         }
 
@@ -262,7 +262,7 @@ namespace RageShowMyLocation
             {
                 RageShowMyLocation.RageShowMyLocationClass.option_pos_x_heading -= 5;
             }
-            SaveSettings();
+            RageShowMyLocationClass.SaveSettings();
         }
 
         private static void OnItemSelect_posMenu_time(UIMenu sender, NativeMenuItem selectedItem, int index)
@@ -286,7 +286,7 @@ namespace RageShowMyLocation
             {
                 RageShowMyLocation.RageShowMyLocationClass.option_pos_x_time -= 5;
             }
-            SaveSettings();
+            RageShowMyLocationClass.SaveSettings();
         }
 
         private static void OnItemSelect_posMenu_speedlimit(UIMenu sender, NativeMenuItem selectedItem, int index)
@@ -310,7 +310,7 @@ namespace RageShowMyLocation
             {
                 RageShowMyLocation.RageShowMyLocationClass.option_pos_x_sl -= 5;
             }
-            SaveSettings();
+            RageShowMyLocationClass.SaveSettings();
         }
 
         private static void OnItemSelect_posMenu_currspeed(UIMenu sender, NativeMenuItem selectedItem, int index)
@@ -334,7 +334,7 @@ namespace RageShowMyLocation
             {
                 RageShowMyLocation.RageShowMyLocationClass.option_pos_x_cs -= 5;
             }
-            SaveSettings();
+            RageShowMyLocationClass.SaveSettings();
         }
 
         private static void OnItemSelect_posMenu_coords(UIMenu sender, NativeMenuItem selectedItem, int index)
@@ -358,7 +358,7 @@ namespace RageShowMyLocation
             {
                 RageShowMyLocation.RageShowMyLocationClass.option_pos_x_coords -= 5;
             }
-            SaveSettings();
+            RageShowMyLocationClass.SaveSettings();
         }
 
         private static void OnListChange_font_size(UIMenu sender, MenuListItem list, int index)
@@ -391,174 +391,10 @@ namespace RageShowMyLocation
             }
 
 
-            SaveSettings();
+            RageShowMyLocationClass.SaveSettings();
         }
 
-        private static void SaveSettings()
-        {
-
-            string line = "";
-            string path = Directory.GetCurrentDirectory();
-            path = path + "\\Plugins\\RageShowMyLocation.ini";
-            if (File.Exists(path))
-            {
-                Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : found settings file, adjusting settings.");
-                Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : Settings File path : " + path);
-                System.IO.FileStream settingsfile = new FileStream(path, FileMode.Open, FileAccess.ReadWrite);
-                System.IO.StreamReader file = new System.IO.StreamReader(settingsfile);
-                System.IO.StreamWriter file_w = new StreamWriter(settingsfile);
-                int index_start = 0;
-                int index_stop = 0;
-                char[] usun_zn = { ';', ',', '.', '#', '/', '\\', ' ' };
-                while ((line = file.ReadLine()) != null)
-                {
-                    line = line.Trim();
-                    line = line.Trim(usun_zn);
-                    if (line.Contains("pos_x="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length,SeekOrigin.Begin);
-                        file_w.Write("pos_x=" + Convert.ToString(RageShowMyLocationClass.option_pos_x));
-                    }
-                    if (line.Contains("pos_y="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_y=" + Convert.ToString(RageShowMyLocationClass.option_pos_y));
-                    }
-
-                    if (line.Contains("pos_x_heading="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_x_heading=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_heading));
-                    }
-                    if (line.Contains("pos_y_heading="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_y_heading=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_heading));
-                    }
-
-                    if (line.Contains("pos_x_time="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_x_time=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_time));
-                    }
-                    if (line.Contains("pos_y_time="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_y_time=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_time));
-                    }
-
-                    if (line.Contains("pos_x_playerspeed="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_x_playerspeed=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_cs));
-                    }
-                    if (line.Contains("pos_y_playerspeed="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_y_playerspeed=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_cs));
-                    }
-
-                    if (line.Contains("pos_x_speedlimit="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_x_speedlimit=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_sl));
-                    }
-                    if (line.Contains("pos_y_speedlimit="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_y_speedlimit=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_sl));
-                    }
-
-                    if (line.Contains("pos_x_coords="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_x_coords=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_coords));
-                    }
-                    if (line.Contains("pos_y_coords="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("pos_y_coords=" + Convert.ToString(RageShowMyLocationClass.option_pos_y_coords));
-                    }
-
-                   if (line.Contains("font_size="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("font_size=" + Convert.ToString(RageShowMyLocationClass.option_font_size));
-                    }
-
-                    if (line.Contains("font_size_heading="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("font_size_heading=" + Convert.ToString(RageShowMyLocationClass.option_font_size_heading));
-                    }
-                    if (line.Contains("font_size_time="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("font_size_time=" + Convert.ToString(RageShowMyLocationClass.option_font_size_time));
-                    }
-                    if (line.Contains("font_size_player_speed="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("font_size_player_speed=" + Convert.ToString(RageShowMyLocationClass.option_font_size_cs));
-                    }
-                    if (line.Contains("font_size_speed_limit="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("font_size_speed_limit=" + Convert.ToString(RageShowMyLocationClass.option_font_size_sl));
-                    }
-                    if (line.Contains("font_size_coords="))
-                    {
-                        index_start = line.IndexOf('=');
-                        index_stop = line.Length - line.IndexOf('=');
-                        file_w.BaseStream.Seek(file.BaseStream.Position - line.Length, SeekOrigin.Begin);
-                        file_w.Write("font_size_coords=" + Convert.ToString(RageShowMyLocationClass.option_font_size_coords));
-                    }
-
-
-                    
-
-                }
-
-                file.Close();
-            }
-
-
-            RageShowMyLocationClass.Reload();
-        }
+        
 
         public static void Process(System.Object obj, GraphicsEventArgs eva)
         {
