@@ -1704,7 +1704,7 @@ namespace RageShowMyLocation
             {
                 Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : found settings file, saving settings.");
                 Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : Settings File path : " + path);
-                System.IO.FileStream settingsfile = new FileStream(path, FileMode.CreateNew, FileAccess.ReadWrite);
+                System.IO.FileStream settingsfile = new FileStream(path, FileMode.Create, FileAccess.ReadWrite);
                 System.IO.StreamWriter file_w = new StreamWriter(settingsfile);
                 
                     
