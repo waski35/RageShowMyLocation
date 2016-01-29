@@ -367,27 +367,27 @@ namespace RageShowMyLocation
 
             if (list == font_size_steet_county_zone)
             {
-                RageShowMyLocation.RageShowMyLocationClass.option_font_size = list.IndexToItem(index).ToInt32();
+                RageShowMyLocation.RageShowMyLocationClass.option_font_size = list.IndexToItem(index);
             }
             if (list == font_size_heading)
             {
-                RageShowMyLocation.RageShowMyLocationClass.option_font_size_heading = list.IndexToItem(index).ToInt32();
+                RageShowMyLocation.RageShowMyLocationClass.option_font_size_heading = list.IndexToItem(index);
             }
             if (list == font_size_time)
             {
-                RageShowMyLocation.RageShowMyLocationClass.option_font_size_time = list.IndexToItem(index).ToInt32();
+                RageShowMyLocation.RageShowMyLocationClass.option_font_size_time = list.IndexToItem(index);
             }
             if (list == font_size_speedlimit)
             {
-                RageShowMyLocation.RageShowMyLocationClass.option_font_size_sl = list.IndexToItem(index).ToInt32();
+                RageShowMyLocation.RageShowMyLocationClass.option_font_size_sl = list.IndexToItem(index);
             } 
             if (list == font_size_currspeed)
             {
-                RageShowMyLocation.RageShowMyLocationClass.option_font_size_cs = list.IndexToItem(index).ToInt32();
+                RageShowMyLocation.RageShowMyLocationClass.option_font_size_cs = list.IndexToItem(index);
             }
             if (list == font_size_coords)
             {
-                RageShowMyLocation.RageShowMyLocationClass.option_font_size_coords = list.IndexToItem(index).ToInt32();
+                RageShowMyLocation.RageShowMyLocationClass.option_font_size_coords = list.IndexToItem(index);
             }
 
 
