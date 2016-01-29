@@ -479,28 +479,28 @@ namespace RageShowMyLocation
                 eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_rect_street, text_col_street);
 
                 eva.Graphics.DrawRectangle(rect_heading, Color.FromArgb(option_box_opacity, Color.Black));
-                eva.Graphics.DrawText(heading, option_font_name, option_font_size, pt_rect_heading, text_col_all);
+                eva.Graphics.DrawText(heading, option_font_name, option_font_size_heading, pt_rect_heading, text_col_all);
                 
                 eva.Graphics.DrawRectangle(rect_time, Color.FromArgb(option_box_opacity, Color.Black));
-                eva.Graphics.DrawText(time, option_font_name, option_font_size, pt_rect_time, text_col_all);
+                eva.Graphics.DrawText(time, option_font_name, option_font_size_time, pt_rect_time, text_col_all);
                 
                 eva.Graphics.DrawRectangle(rect_sl, Color.FromArgb(option_box_opacity, Color.Black));
-                eva.Graphics.DrawText(speed_lim, option_font_name, option_font_size, pt_rect_sl, text_col_all);
+                eva.Graphics.DrawText(speed_lim, option_font_name, option_font_size_sl, pt_rect_sl, text_col_all);
                 
                 eva.Graphics.DrawRectangle(rect_cs, Color.FromArgb(option_box_opacity, Color.Black));
-                eva.Graphics.DrawText(player_speed, option_font_name, option_font_size, pt_rect_cs, text_col_all);
+                eva.Graphics.DrawText(player_speed, option_font_name, option_font_size_cs, pt_rect_cs, text_col_all);
                 
                 eva.Graphics.DrawRectangle(rect_coords, Color.FromArgb(option_box_opacity, Color.Black));
-                eva.Graphics.DrawText(coords, option_font_name, option_font_size, pt_rect_coords, text_col_all);
+                eva.Graphics.DrawText(coords, option_font_name, option_font_size_coords, pt_rect_coords, text_col_all);
             }
             else
             {
                 eva.Graphics.DrawText(street, option_font_name, option_font_size, pt_street, text_col_street);
-                eva.Graphics.DrawText(heading, option_font_name, option_font_size, pt_heading, text_col_all);
-                eva.Graphics.DrawText(speed_lim, option_font_name, option_font_size, pt_sl, text_col_all);
-                eva.Graphics.DrawText(time, option_font_name, option_font_size, pt_time, text_col_all);
-                eva.Graphics.DrawText(player_speed, option_font_name, option_font_size, pt_cs, text_col_all);
-                eva.Graphics.DrawText(coords, option_font_name, option_font_size, pt_coords, text_col_all);
+                eva.Graphics.DrawText(heading, option_font_name, option_font_size_heading, pt_heading, text_col_all);
+                eva.Graphics.DrawText(speed_lim, option_font_name, option_font_size_sl, pt_sl, text_col_all);
+                eva.Graphics.DrawText(time, option_font_name, option_font_size_time, pt_time, text_col_all);
+                eva.Graphics.DrawText(player_speed, option_font_name, option_font_size_cs, pt_cs, text_col_all);
+                eva.Graphics.DrawText(coords, option_font_name, option_font_size_coords, pt_coords, text_col_all);
             }
 
             
@@ -555,7 +555,7 @@ namespace RageShowMyLocation
 
             pt_heading = new PointF(option_pos_x_heading, option_pos_y_heading);
             text_rect_heading = new SizeF();
-            text_rect_heading = Rage.Graphics.MeasureText(heading, option_font_name, option_font_size);
+            text_rect_heading = Rage.Graphics.MeasureText(heading, option_font_name, option_font_size_heading);
 
             rect_size_heading = new SizeF((text_rect_heading.Width + ((text_rect_heading.Width / heading.Length) * 2)), text_rect_heading.Height + (text_rect_heading.Height / 2));
             pt_rect_heading = new PointF(pt_heading.X + ((rect_size_heading.Width / heading.Length) / 2), pt_heading.Y + (text_rect_heading.Height / 8));
@@ -563,7 +563,7 @@ namespace RageShowMyLocation
 
             pt_time = new PointF(option_pos_x_time, option_pos_y_time);
             text_rect_time = new SizeF();
-            text_rect_time = Rage.Graphics.MeasureText(time, option_font_name, option_font_size);
+            text_rect_time = Rage.Graphics.MeasureText(time, option_font_name, option_font_size_time);
 
             rect_size_time = new SizeF((text_rect_time.Width + ((text_rect_time.Width / time.Length) * 2)), text_rect_time.Height + (text_rect_time.Height / 2));
             pt_rect_time = new PointF(pt_time.X + ((rect_size_time.Width / time.Length) / 2), pt_time.Y + (text_rect_time.Height / 8));
@@ -571,7 +571,7 @@ namespace RageShowMyLocation
 
             pt_sl = new PointF(option_pos_x_sl, option_pos_y_sl);
             text_rect_sl = new SizeF();
-            text_rect_sl = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+            text_rect_sl = Rage.Graphics.MeasureText(street, option_font_name, option_font_size_sl);
 
             rect_size_sl = new SizeF((text_rect_sl.Width + ((text_rect_sl.Width / speed_lim.Length) * 2)), text_rect_sl.Height + (text_rect_sl.Height / 2));
             pt_rect_sl = new PointF(pt_sl.X + ((rect_size_sl.Width / speed_lim.Length) / 2), pt_sl.Y + (text_rect_sl.Height / 8));
@@ -579,7 +579,7 @@ namespace RageShowMyLocation
 
             pt_cs = new PointF(option_pos_x_cs, option_pos_y_cs);
             text_rect_cs = new SizeF();
-            text_rect_cs = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+            text_rect_cs = Rage.Graphics.MeasureText(street, option_font_name, option_font_size_cs);
 
             rect_size_cs = new SizeF((text_rect_cs.Width + ((text_rect_cs.Width / player_speed.Length) * 2)), text_rect_cs.Height + (text_rect_cs.Height / 2));
             pt_rect_cs = new PointF(pt_cs.X + ((rect_size_cs.Width / player_speed.Length) / 2), pt_cs.Y + (text_rect_cs.Height / 8));
@@ -587,7 +587,7 @@ namespace RageShowMyLocation
 
             pt_coords = new PointF(option_pos_x_coords, option_pos_y_coords);
             text_rect_coords = new SizeF();
-            text_rect_coords = Rage.Graphics.MeasureText(street, option_font_name, option_font_size);
+            text_rect_coords = Rage.Graphics.MeasureText(street, option_font_name, option_font_size_coords);
 
             rect_size_coords = new SizeF((text_rect_coords.Width + ((text_rect_coords.Width / coords.Length) * 2)), text_rect_coords.Height + (text_rect_coords.Height / 2));
             pt_rect_coords = new PointF(pt_coords.X + ((rect_size_coords.Width / coords.Length) / 2), pt_coords.Y + (text_rect_coords.Height / 8));
@@ -1709,6 +1709,8 @@ namespace RageShowMyLocation
                 
                     
                 file_w.WriteLine("// This is settings file for RageShowMyLocation Plugin");
+                file_w.WriteLine("//");
+                file_w.WriteLine("// - PRESS - F5 In-Game to show menu and configure font size and position");
                 file_w.WriteLine("//");
                 file_w.WriteLine("// Settings Explanation :");
                 file_w.WriteLine("// pos_x, pos _y - screen position in pixels where text will be displayed, put here an integer, for each axis, x = 0 and y = 0 means upper left corner o screen,");
