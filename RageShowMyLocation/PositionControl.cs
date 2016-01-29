@@ -34,6 +34,7 @@ namespace RageShowMyLocation
         private static NativeMenuItem set_pos_speedlimit;
         private static NativeMenuItem set_pos_currspeed;
         private static NativeMenuItem set_pos_coords;
+        private static NativeMenuItem fontsizemenuCaller;
         private static MenuListItem font_size_steet_county_zone;
         private static MenuListItem font_size_heading;
         private static MenuListItem font_size_time;
@@ -80,20 +81,27 @@ namespace RageShowMyLocation
         {
             _menuPool = new MenuPool();
 
-            mainMenu = new UIMenu("RageShowMyLocation MENU", "~b~Configure Position of elements");
+            mainMenu = new UIMenu("RSML MENU", "");
 
-            posMenu_street = new UIMenu("RageShowMyLocation MENU", "~b~Configure Position of street element");
-            posMenu_heading = new UIMenu("RageShowMyLocation MENU", "~b~Configure Position of heading element");
-            posMenu_time = new UIMenu("RageShowMyLocation MENU", "~b~Configure Position of time element");
-            posMenu_currspeed = new UIMenu("RageShowMyLocation MENU", "~b~Configure Position of player speed element");
-            posMenu_speedlimit = new UIMenu("RageShowMyLocation MENU", "~b~Configure Position of speed limit element");
-            posMenu_coords = new UIMenu("RageShowMyLocation MENU", "~b~Configure Position of player coords element");
+            posMenu_street = new UIMenu("RSML MENU", "~b~Configure Position of street element");
+            posMenu_heading = new UIMenu("RSML MENU", "~b~Configure Position of heading element");
+            posMenu_time = new UIMenu("RSML MENU", "~b~Configure Position of time element");
+            posMenu_currspeed = new UIMenu("RSML MENU", "~b~Configure Position of player speed element");
+            posMenu_speedlimit = new UIMenu("RSML MENU", "~b~Configure Position of speed limit element");
+            posMenu_coords = new UIMenu("RSML MENU", "~b~Configure Position of player coords element");
 
 
-            font_sizeMenu = new UIMenu("RageShowMyLocation MENU", "~b~Configure font size of elements");
+            font_sizeMenu = new UIMenu("RSML MENU", "");
+            
 
             _menuPool.Add(mainMenu);
             _menuPool.Add(font_sizeMenu);
+            _menuPool.Add(posMenu_street);
+            _menuPool.Add(posMenu_time);
+            _menuPool.Add(posMenu_speedlimit);
+            _menuPool.Add(posMenu_heading);
+            _menuPool.Add(posMenu_currspeed);
+            _menuPool.Add(posMenu_coords);
 
             font_sizes = new List<dynamic>
             {
@@ -127,6 +135,7 @@ namespace RageShowMyLocation
             mainMenu.AddItem(set_pos_speedlimit = new NativeMenuItem("Set position of speed limit element", ""));
             mainMenu.AddItem(set_pos_currspeed = new NativeMenuItem("Set position of current player speed element", ""));
             mainMenu.AddItem(set_pos_coords = new NativeMenuItem("Set position of player coords element", ""));
+            mainMenu.AddItem(fontsizemenuCaller = new NativeMenuItem("Enter to set font size for elements"));
 
             
             font_sizeMenu.AddItem(font_size_steet_county_zone = new MenuListItem("Set font size of street/county/zone element", font_sizes, 0));
@@ -168,13 +177,23 @@ namespace RageShowMyLocation
             posMenu_coords.AddItem(set_pos_coords_LEFT = new NativeMenuItem("Left", ""));
 
 
+            mainMenu.RefreshIndex();
+            font_sizeMenu.RefreshIndex();
+            posMenu_street.RefreshIndex();
+            posMenu_time.RefreshIndex();
+            posMenu_speedlimit.RefreshIndex();
+            posMenu_heading.RefreshIndex();
+            posMenu_currspeed.RefreshIndex();
+            posMenu_coords.RefreshIndex();
 
+            mainMenu.BindMenuToItem(font_sizeMenu, fontsizemenuCaller);
             mainMenu.BindMenuToItem(posMenu_street, set_pos_steet_county_zone);
             mainMenu.BindMenuToItem(posMenu_heading, set_pos_heading);
             mainMenu.BindMenuToItem(posMenu_time, set_pos_time);
             mainMenu.BindMenuToItem(posMenu_speedlimit, set_pos_speedlimit);
             mainMenu.BindMenuToItem(posMenu_currspeed, set_pos_currspeed);
             mainMenu.BindMenuToItem(posMenu_coords, set_pos_coords);
+            
 
             mainMenu.OnItemSelect += OnItemSelect;
 
