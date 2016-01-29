@@ -404,8 +404,9 @@ namespace RageShowMyLocation
             {
                 Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : found settings file, adjusting settings.");
                 Game.LogTrivial(RageShowMyLocationClass.plug_ver + " : Settings File path : " + path);
-                System.IO.StreamReader file = new System.IO.StreamReader(path);
-                System.IO.StreamWriter file_w = new StreamWriter(file.BaseStream);
+                System.IO.FileStream settingsfile = new FileStream(path, FileMode.Open, FileAccess.ReadWrite);
+                System.IO.StreamReader file = new System.IO.StreamReader(settingsfile);
+                System.IO.StreamWriter file_w = new StreamWriter(settingsfile);
                 int index_start = 0;
                 int index_stop = 0;
                 char[] usun_zn = { ';', ',', '.', '#', '/', '\\', ' ' };
