@@ -565,7 +565,7 @@ namespace RageShowMyLocation
             text_rect_time = new SizeF();
             text_rect_time = Rage.Graphics.MeasureText(time, option_font_name, option_font_size_time);
 
-            rect_size_time = new SizeF((text_rect_time.Width + ((text_rect_time.Width / time.Length) * 2)), text_rect_time.Height + (text_rect_time.Height / 2));
+            rect_size_time = new SizeF((text_rect_time.Width + ((text_rect_time.Width / time.Length) * 2)), option_font_size_time + (option_font_size_time / 2));
             pt_rect_time = new PointF(pt_time.X + ((rect_size_time.Width / time.Length) / 2), pt_time.Y + (text_rect_time.Height / 8));
             rect_time = new RectangleF(pt_time, rect_size_time);
 
@@ -573,7 +573,7 @@ namespace RageShowMyLocation
             text_rect_sl = new SizeF();
             text_rect_sl = Rage.Graphics.MeasureText(speed_lim, option_font_name, option_font_size_sl);
 
-            rect_size_sl = new SizeF((text_rect_sl.Width + ((text_rect_sl.Width / speed_lim.Length) * 2)), text_rect_sl.Height + (text_rect_sl.Height / 2));
+            rect_size_sl = new SizeF((text_rect_sl.Width + ((text_rect_sl.Width / speed_lim.Length) * 2)), option_font_size_sl + (option_font_size_sl / 2));
             pt_rect_sl = new PointF(pt_sl.X + ((rect_size_sl.Width / speed_lim.Length) / 2), pt_sl.Y + (text_rect_sl.Height / 8));
             rect_sl = new RectangleF(pt_sl, rect_size_sl);
 
