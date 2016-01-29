@@ -1420,7 +1420,11 @@ namespace RageShowMyLocation
             String direction = "";
             Ped ped = Game.LocalPlayer.Character;
             float heading_degrees = ped.Heading;
-            if ((heading_degrees > 350.0  && heading_degrees < 0.0) || (heading_degrees >= 0.0 && heading_degrees < 15.0))
+            if (heading_degrees > 350.0  && heading_degrees < 0.0)
+            {
+                direction = "N";
+            }
+            else if (heading_degrees >= 0.0 && heading_degrees < 15.0)
             {
                 direction = "N";
             }
