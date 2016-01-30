@@ -34,7 +34,7 @@ namespace RageShowMyLocation
         private static int option_show_time = 0;
         private static int option_show_heading = 0;
         private static string option_menu_key = "F5";
-        private static Keys menu_key;
+        public static Keys menu_key;
         private static Rage.Graphics graf;
         public static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
         private static Color text_col_all;

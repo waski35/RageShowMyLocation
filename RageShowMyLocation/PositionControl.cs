@@ -398,7 +398,7 @@ namespace RageShowMyLocation
 
         public static void Process(System.Object obj, GraphicsEventArgs eva)
         {
-            if (Game.IsKeyDown(Keys.F5) && !_menuPool.IsAnyMenuOpen()) // Our menu on/off switch.
+            if (Game.IsKeyDown(RageShowMyLocationClass.menu_key) && !_menuPool.IsAnyMenuOpen()) // Our menu on/off switch.
                 mainMenu.Visible = !mainMenu.Visible;
 
             _menuPool.ProcessMenus();       // Procces all our menus: draw the menu and procces the key strokes and the mouse.  
