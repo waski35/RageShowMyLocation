@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 [assembly: Rage.Attributes.Plugin("RageShowMyLocation", Description = "Shows current location, Speed Limit etc", Author = "waski35")]
 
 namespace RageShowMyLocation
@@ -31,7 +32,9 @@ namespace RageShowMyLocation
         private static int option_show_zone = 0;
         private static int option_show_player_speed = 0;
         private static int option_show_time = 0;
-        private static int option_show_heading = 9;
+        private static int option_show_heading = 0;
+        private static string option_menu_key = "F5";
+        private static Keys menu_key;
         private static Rage.Graphics graf;
         public static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
         private static Color text_col_all;
@@ -341,10 +344,19 @@ namespace RageShowMyLocation
                         option_show_heading = Convert.ToInt32(line.Substring(index_start + 1));
 
                     }
+                    if (line.Contains("menu_key="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_menu_key = Convert.ToString(line.Substring(index_start + 1));
+
+                    }
 
                 }
 
                 file.Close();
+                menu_key = (Keys)Enum.Parse(typeof(Keys), option_menu_key, true);
+
             }
 
         }
@@ -438,11 +450,11 @@ namespace RageShowMyLocation
             }
             else if (str.Contains("County"))
             {
-                ret = 45;
+                ret = 35;
             }
             else if (str.Contains("City"))
             {
-                ret = 35;
+                ret = 25;
             }
             else
             {
@@ -1714,7 +1726,7 @@ namespace RageShowMyLocation
                     
                 file_w.WriteLine("// This is settings file for RageShowMyLocation Plugin");
                 file_w.WriteLine("//");
-                file_w.WriteLine("// - PRESS - F5 In-Game to show menu and configure font size and position");
+                file_w.WriteLine("// - PRESS - F5 (default) In-Game to show menu and configure font size and position");
                 file_w.WriteLine("//");
                 file_w.WriteLine("// Settings Explanation :");
                 file_w.WriteLine("// pos_x, pos _y - screen position in pixels where text will be displayed, put here an integer, for each axis, x = 0 and y = 0 means upper left corner o screen,");
@@ -1731,6 +1743,7 @@ namespace RageShowMyLocation
                 file_w.WriteLine("// show_zone - set to 0 to not display curent zone, or to 1 to display it (option shows raw data, a the moment)");
                 file_w.WriteLine("//");
                 file_w.WriteLine("//");
+                file_w.WriteLine("menu_key=" + Convert.ToString(menu_key));
                 file_w.WriteLine("pos_x=" + Convert.ToString(RageShowMyLocationClass.option_pos_x));
                 file_w.WriteLine("pos_y=" + Convert.ToString(RageShowMyLocationClass.option_pos_y));
                 file_w.WriteLine("pos_x_heading=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_heading));
