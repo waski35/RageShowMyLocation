@@ -28,51 +28,51 @@ namespace RageShowMyLocation
         public static UIMenu font_sizeMenu;
         public static MenuPool _menuPool;
 
-        private static NativeMenuItem set_pos_steet_county_zone;
-        private static NativeMenuItem set_pos_heading;
-        private static NativeMenuItem set_pos_time;
-        private static NativeMenuItem set_pos_speedlimit;
-        private static NativeMenuItem set_pos_currspeed;
-        private static NativeMenuItem set_pos_coords;
-        private static NativeMenuItem fontsizemenuCaller;
-        private static MenuListItem font_size_steet_county_zone;
-        private static MenuListItem font_size_heading;
-        private static MenuListItem font_size_time;
-        private static MenuListItem font_size_speedlimit;
-        private static MenuListItem font_size_currspeed;
-        private static MenuListItem font_size_coords;
+        private static UIMenuItem set_pos_steet_county_zone;
+        private static UIMenuItem set_pos_heading;
+        private static UIMenuItem set_pos_time;
+        private static UIMenuItem set_pos_speedlimit;
+        private static UIMenuItem set_pos_currspeed;
+        private static UIMenuItem set_pos_coords;
+        private static UIMenuItem fontsizemenuCaller;
+        private static UIMenuListItem font_size_steet_county_zone;
+        private static UIMenuListItem font_size_heading;
+        private static UIMenuListItem font_size_time;
+        private static UIMenuListItem font_size_speedlimit;
+        private static UIMenuListItem font_size_currspeed;
+        private static UIMenuListItem font_size_coords;
         private static List<dynamic> font_sizes;
 
 
-        private static NativeMenuItem set_pos_steet_county_zone_UP;
-        private static NativeMenuItem set_pos_steet_county_zone_DOWN;
-        private static NativeMenuItem set_pos_steet_county_zone_RIGHT;
-        private static NativeMenuItem set_pos_steet_county_zone_LEFT;
+        private static UIMenuItem set_pos_steet_county_zone_UP;
+        private static UIMenuItem set_pos_steet_county_zone_DOWN;
+        private static UIMenuItem set_pos_steet_county_zone_RIGHT;
+        private static UIMenuItem set_pos_steet_county_zone_LEFT;
         
-        private static NativeMenuItem set_pos_heading_UP;
-        private static NativeMenuItem set_pos_heading_DOWN;
-        private static NativeMenuItem set_pos_heading_RIGHT;
-        private static NativeMenuItem set_pos_heading_LEFT;
+        private static UIMenuItem set_pos_heading_UP;
+        private static UIMenuItem set_pos_heading_DOWN;
+        private static UIMenuItem set_pos_heading_RIGHT;
+        private static UIMenuItem set_pos_heading_LEFT;
         
-        private static NativeMenuItem set_pos_time_UP;
-        private static NativeMenuItem set_pos_time_DOWN;
-        private static NativeMenuItem set_pos_time_RIGHT;
-        private static NativeMenuItem set_pos_time_LEFT;
+        private static UIMenuItem set_pos_time_UP;
+        private static UIMenuItem set_pos_time_DOWN;
+        private static UIMenuItem set_pos_time_RIGHT;
+        private static UIMenuItem set_pos_time_LEFT;
         
-        private static NativeMenuItem set_pos_speedlimit_UP;
-        private static NativeMenuItem set_pos_speedlimit_DOWN;
-        private static NativeMenuItem set_pos_speedlimit_RIGHT;
-        private static NativeMenuItem set_pos_speedlimit_LEFT;
+        private static UIMenuItem set_pos_speedlimit_UP;
+        private static UIMenuItem set_pos_speedlimit_DOWN;
+        private static UIMenuItem set_pos_speedlimit_RIGHT;
+        private static UIMenuItem set_pos_speedlimit_LEFT;
 
-        private static NativeMenuItem set_pos_currspeed_UP;
-        private static NativeMenuItem set_pos_currspeed_DOWN;
-        private static NativeMenuItem set_pos_currspeed_RIGHT;
-        private static NativeMenuItem set_pos_currspeed_LEFT;
+        private static UIMenuItem set_pos_currspeed_UP;
+        private static UIMenuItem set_pos_currspeed_DOWN;
+        private static UIMenuItem set_pos_currspeed_RIGHT;
+        private static UIMenuItem set_pos_currspeed_LEFT;
 
-        private static NativeMenuItem set_pos_coords_UP;
-        private static NativeMenuItem set_pos_coords_DOWN;
-        private static NativeMenuItem set_pos_coords_RIGHT;
-        private static NativeMenuItem set_pos_coords_LEFT;
+        private static UIMenuItem set_pos_coords_UP;
+        private static UIMenuItem set_pos_coords_DOWN;
+        private static UIMenuItem set_pos_coords_RIGHT;
+        private static UIMenuItem set_pos_coords_LEFT;
         
 
 
@@ -129,52 +129,52 @@ namespace RageShowMyLocation
                 0xF00D, // Dynamic!
             }; 
 
-            mainMenu.AddItem(set_pos_steet_county_zone = new NativeMenuItem("Set position of street/county/zone element","" ));
-            mainMenu.AddItem(set_pos_heading = new NativeMenuItem("Set position of heading element", ""));
-            mainMenu.AddItem(set_pos_time = new NativeMenuItem("Set position of time element", ""));
-            mainMenu.AddItem(set_pos_speedlimit = new NativeMenuItem("Set position of speed limit element", ""));
-            mainMenu.AddItem(set_pos_currspeed = new NativeMenuItem("Set position of current player speed element", ""));
-            mainMenu.AddItem(set_pos_coords = new NativeMenuItem("Set position of player coords element", ""));
-            mainMenu.AddItem(fontsizemenuCaller = new NativeMenuItem("Enter to set font size for elements"));
+            mainMenu.AddItem(set_pos_steet_county_zone = new UIMenuItem("Set position of street/county/zone element","" ));
+            mainMenu.AddItem(set_pos_heading = new UIMenuItem("Set position of heading element", ""));
+            mainMenu.AddItem(set_pos_time = new UIMenuItem("Set position of time element", ""));
+            mainMenu.AddItem(set_pos_speedlimit = new UIMenuItem("Set position of speed limit element", ""));
+            mainMenu.AddItem(set_pos_currspeed = new UIMenuItem("Set position of current player speed element", ""));
+            mainMenu.AddItem(set_pos_coords = new UIMenuItem("Set position of player coords element", ""));
+            mainMenu.AddItem(fontsizemenuCaller = new UIMenuItem("Enter to set font size for elements"));
 
             
-            font_sizeMenu.AddItem(font_size_steet_county_zone = new MenuListItem("Set font size of street/county/zone element", font_sizes, 0));
-            font_sizeMenu.AddItem(font_size_heading = new MenuListItem("Set font size of heading element", font_sizes, 0));
-            font_sizeMenu.AddItem(font_size_time = new MenuListItem("Set font size of time element", font_sizes, 0));
-            font_sizeMenu.AddItem(font_size_speedlimit = new MenuListItem("Set font size of speed limit element", font_sizes, 0));
-            font_sizeMenu.AddItem(font_size_currspeed = new MenuListItem("Set font size of player speed element", font_sizes, 0));
-            font_sizeMenu.AddItem(font_size_coords = new MenuListItem("Set font size of player coords element", font_sizes, 0));
+            font_sizeMenu.AddItem(font_size_steet_county_zone = new UIMenuListItem("Set font size of street/county/zone element", font_sizes, 0));
+            font_sizeMenu.AddItem(font_size_heading = new UIMenuListItem("Set font size of heading element", font_sizes, 0));
+            font_sizeMenu.AddItem(font_size_time = new UIMenuListItem("Set font size of time element", font_sizes, 0));
+            font_sizeMenu.AddItem(font_size_speedlimit = new UIMenuListItem("Set font size of speed limit element", font_sizes, 0));
+            font_sizeMenu.AddItem(font_size_currspeed = new UIMenuListItem("Set font size of player speed element", font_sizes, 0));
+            font_sizeMenu.AddItem(font_size_coords = new UIMenuListItem("Set font size of player coords element", font_sizes, 0));
 
 
-            posMenu_street.AddItem(set_pos_steet_county_zone_UP = new NativeMenuItem("Up", ""));
-            posMenu_street.AddItem(set_pos_steet_county_zone_DOWN = new NativeMenuItem("Down", ""));
-            posMenu_street.AddItem(set_pos_steet_county_zone_RIGHT = new NativeMenuItem("Right", ""));
-            posMenu_street.AddItem(set_pos_steet_county_zone_LEFT = new NativeMenuItem("Left", ""));
+            posMenu_street.AddItem(set_pos_steet_county_zone_UP = new UIMenuItem("Up", ""));
+            posMenu_street.AddItem(set_pos_steet_county_zone_DOWN = new UIMenuItem("Down", ""));
+            posMenu_street.AddItem(set_pos_steet_county_zone_RIGHT = new UIMenuItem("Right", ""));
+            posMenu_street.AddItem(set_pos_steet_county_zone_LEFT = new UIMenuItem("Left", ""));
 
-            posMenu_heading.AddItem(set_pos_heading_UP = new NativeMenuItem("Up", ""));
-            posMenu_heading.AddItem(set_pos_heading_DOWN = new NativeMenuItem("Down", ""));
-            posMenu_heading.AddItem(set_pos_heading_RIGHT = new NativeMenuItem("Right", ""));
-            posMenu_heading.AddItem(set_pos_heading_LEFT = new NativeMenuItem("Left", ""));
+            posMenu_heading.AddItem(set_pos_heading_UP = new UIMenuItem("Up", ""));
+            posMenu_heading.AddItem(set_pos_heading_DOWN = new UIMenuItem("Down", ""));
+            posMenu_heading.AddItem(set_pos_heading_RIGHT = new UIMenuItem("Right", ""));
+            posMenu_heading.AddItem(set_pos_heading_LEFT = new UIMenuItem("Left", ""));
 
-            posMenu_time.AddItem(set_pos_time_UP = new NativeMenuItem("Up", ""));
-            posMenu_time.AddItem(set_pos_time_DOWN = new NativeMenuItem("Down", ""));
-            posMenu_time.AddItem(set_pos_time_RIGHT = new NativeMenuItem("Right", ""));
-            posMenu_time.AddItem(set_pos_time_LEFT = new NativeMenuItem("Left", ""));
+            posMenu_time.AddItem(set_pos_time_UP = new UIMenuItem("Up", ""));
+            posMenu_time.AddItem(set_pos_time_DOWN = new UIMenuItem("Down", ""));
+            posMenu_time.AddItem(set_pos_time_RIGHT = new UIMenuItem("Right", ""));
+            posMenu_time.AddItem(set_pos_time_LEFT = new UIMenuItem("Left", ""));
 
-            posMenu_speedlimit.AddItem(set_pos_speedlimit_UP = new NativeMenuItem("Up", ""));
-            posMenu_speedlimit.AddItem(set_pos_speedlimit_DOWN = new NativeMenuItem("Down", ""));
-            posMenu_speedlimit.AddItem(set_pos_speedlimit_RIGHT = new NativeMenuItem("Right", ""));
-            posMenu_speedlimit.AddItem(set_pos_speedlimit_LEFT = new NativeMenuItem("Left", ""));
+            posMenu_speedlimit.AddItem(set_pos_speedlimit_UP = new UIMenuItem("Up", ""));
+            posMenu_speedlimit.AddItem(set_pos_speedlimit_DOWN = new UIMenuItem("Down", ""));
+            posMenu_speedlimit.AddItem(set_pos_speedlimit_RIGHT = new UIMenuItem("Right", ""));
+            posMenu_speedlimit.AddItem(set_pos_speedlimit_LEFT = new UIMenuItem("Left", ""));
 
-            posMenu_currspeed.AddItem(set_pos_currspeed_UP = new NativeMenuItem("Up", ""));
-            posMenu_currspeed.AddItem(set_pos_currspeed_DOWN = new NativeMenuItem("Down", ""));
-            posMenu_currspeed.AddItem(set_pos_currspeed_RIGHT = new NativeMenuItem("Right", ""));
-            posMenu_currspeed.AddItem(set_pos_currspeed_LEFT = new NativeMenuItem("Left", ""));
+            posMenu_currspeed.AddItem(set_pos_currspeed_UP = new UIMenuItem("Up", ""));
+            posMenu_currspeed.AddItem(set_pos_currspeed_DOWN = new UIMenuItem("Down", ""));
+            posMenu_currspeed.AddItem(set_pos_currspeed_RIGHT = new UIMenuItem("Right", ""));
+            posMenu_currspeed.AddItem(set_pos_currspeed_LEFT = new UIMenuItem("Left", ""));
 
-            posMenu_coords.AddItem(set_pos_coords_UP = new NativeMenuItem("Up", ""));
-            posMenu_coords.AddItem(set_pos_coords_DOWN = new NativeMenuItem("Down", ""));
-            posMenu_coords.AddItem(set_pos_coords_RIGHT = new NativeMenuItem("Right", ""));
-            posMenu_coords.AddItem(set_pos_coords_LEFT = new NativeMenuItem("Left", ""));
+            posMenu_coords.AddItem(set_pos_coords_UP = new UIMenuItem("Up", ""));
+            posMenu_coords.AddItem(set_pos_coords_DOWN = new UIMenuItem("Down", ""));
+            posMenu_coords.AddItem(set_pos_coords_RIGHT = new UIMenuItem("Right", ""));
+            posMenu_coords.AddItem(set_pos_coords_LEFT = new UIMenuItem("Left", ""));
 
 
             mainMenu.RefreshIndex();
@@ -207,7 +207,7 @@ namespace RageShowMyLocation
             font_sizeMenu.OnListChange += OnListChange_font_size;
         }
 
-        private static void OnItemSelect(UIMenu sender, NativeMenuItem selectedItem, int index)
+        private static void OnItemSelect(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if (sender != mainMenu) return; // We only want to detect changes from our menu.
             // You can also detect the button by using index
@@ -215,7 +215,7 @@ namespace RageShowMyLocation
                         
         }
 
-        private static void OnItemSelect_posMenu_street(UIMenu sender, NativeMenuItem selectedItem, int index)
+        private static void OnItemSelect_posMenu_street(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if (sender != posMenu_street) return; // We only want to detect changes from our menu.
             // You can also detect the button by using index
@@ -241,7 +241,7 @@ namespace RageShowMyLocation
 
         }
 
-        private static void OnItemSelect_posMenu_heading(UIMenu sender, NativeMenuItem selectedItem, int index)
+        private static void OnItemSelect_posMenu_heading(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if (sender != posMenu_heading) return; // We only want to detect changes from our menu.
             // You can also detect the button by using index
@@ -265,7 +265,7 @@ namespace RageShowMyLocation
             RageShowMyLocationClass.SaveSettings();
         }
 
-        private static void OnItemSelect_posMenu_time(UIMenu sender, NativeMenuItem selectedItem, int index)
+        private static void OnItemSelect_posMenu_time(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if (sender != posMenu_time) return; // We only want to detect changes from our menu.
             // You can also detect the button by using index
@@ -289,7 +289,7 @@ namespace RageShowMyLocation
             RageShowMyLocationClass.SaveSettings();
         }
 
-        private static void OnItemSelect_posMenu_speedlimit(UIMenu sender, NativeMenuItem selectedItem, int index)
+        private static void OnItemSelect_posMenu_speedlimit(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if (sender != posMenu_speedlimit) return; // We only want to detect changes from our menu.
             // You can also detect the button by using index
@@ -313,7 +313,7 @@ namespace RageShowMyLocation
             RageShowMyLocationClass.SaveSettings();
         }
 
-        private static void OnItemSelect_posMenu_currspeed(UIMenu sender, NativeMenuItem selectedItem, int index)
+        private static void OnItemSelect_posMenu_currspeed(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if (sender != posMenu_currspeed) return; // We only want to detect changes from our menu.
             // You can also detect the button by using index
@@ -337,7 +337,7 @@ namespace RageShowMyLocation
             RageShowMyLocationClass.SaveSettings();
         }
 
-        private static void OnItemSelect_posMenu_coords(UIMenu sender, NativeMenuItem selectedItem, int index)
+        private static void OnItemSelect_posMenu_coords(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if (sender != posMenu_coords) return; // We only want to detect changes from our menu.
             // You can also detect the button by using index
@@ -361,7 +361,7 @@ namespace RageShowMyLocation
             RageShowMyLocationClass.SaveSettings();
         }
 
-        private static void OnListChange_font_size(UIMenu sender, MenuListItem list, int index)
+        private static void OnListChange_font_size(UIMenu sender, UIMenuListItem list, int index)
         {
             if (sender != font_sizeMenu) return;
 
