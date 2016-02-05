@@ -34,7 +34,9 @@ namespace RageShowMyLocation
         private static int option_show_time = 0;
         private static int option_show_heading = 0;
         private static string option_menu_key = "F5";
+        private static string option_modifier_key = "LShift";
         public static Keys menu_key;
+        public static Keys modifier_key;
         private static Rage.Graphics graf;
         public static string plug_ver = "RageShowMyLocation " + typeof(RageShowMyLocationClass).Assembly.GetName().Version;
         private static Color text_col_all;
@@ -351,11 +353,19 @@ namespace RageShowMyLocation
                         option_menu_key = Convert.ToString(line.Substring(index_start + 1));
 
                     }
+                    if (line.Contains("menu_modifier_key="))
+                    {
+                        index_start = line.IndexOf('=');
+                        index_stop = line.Length - line.IndexOf('=');
+                        option_modifier_key = Convert.ToString(line.Substring(index_start + 1));
+
+                    }
 
                 }
 
                 file.Close();
                 menu_key = (Keys)Enum.Parse(typeof(Keys), option_menu_key, true);
+                modifier_key = (Keys)Enum.Parse(typeof(Keys), option_modifier_key, true);
 
             }
 
@@ -1744,6 +1754,7 @@ namespace RageShowMyLocation
                 file_w.WriteLine("//");
                 file_w.WriteLine("//");
                 file_w.WriteLine("menu_key=" + Convert.ToString(menu_key));
+                file_w.WriteLine("menu_modifier_key=" + Convert.ToString(modifier_key));
                 file_w.WriteLine("pos_x=" + Convert.ToString(RageShowMyLocationClass.option_pos_x));
                 file_w.WriteLine("pos_y=" + Convert.ToString(RageShowMyLocationClass.option_pos_y));
                 file_w.WriteLine("pos_x_heading=" + Convert.ToString(RageShowMyLocationClass.option_pos_x_heading));
