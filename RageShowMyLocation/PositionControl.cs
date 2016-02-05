@@ -399,7 +399,7 @@ namespace RageShowMyLocation
         public static void Process(System.Object obj, GraphicsEventArgs eva)
         {
             IList<Keys> klawisze = RAGENativeUI.Common.GetPressedKeys();
-            if ((klawisze.Count == 2 && klawisze.Contains(RageShowMyLocationClass.modifier_key) && klawisze.Contains(RageShowMyLocationClass.menu_key)) && !_menuPool.IsAnyMenuOpen()) // Our menu on/off switch.
+            if ((klawisze.Contains(RageShowMyLocationClass.modifier_key) && klawisze.Contains(RageShowMyLocationClass.menu_key)) && !_menuPool.IsAnyMenuOpen()) // Our menu on/off switch.
             {
                 
                     mainMenu.Visible = !mainMenu.Visible;
