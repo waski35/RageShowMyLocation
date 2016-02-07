@@ -1442,7 +1442,7 @@ namespace RageShowMyLocation
             String direction = "";
             Ped ped = Game.LocalPlayer.Character;
             float heading_degrees = ped.Heading;
-            if (heading_degrees > 350.0  && heading_degrees < 0.0)
+            if (heading_degrees >= 350.0  && heading_degrees < 0.0)
             {
                 direction = "N";
             }
@@ -1450,31 +1450,31 @@ namespace RageShowMyLocation
             {
                 direction = "N";
             }
-            else if (heading_degrees > 15.0 && heading_degrees < 80.0)
+            else if (heading_degrees >= 15.0 && heading_degrees < 80.0)
             {
                 direction = "NW";
             }
-            else if (heading_degrees > 80.0 && heading_degrees < 105.0)
+            else if (heading_degrees >= 80.0 && heading_degrees < 105.0)
             {
                 direction = "W";
             }
-            else if (heading_degrees > 105.00 && heading_degrees < 165.0)
+            else if (heading_degrees >= 105.00 && heading_degrees < 165.0)
             {
                 direction = "SW";
             }
-            else if (heading_degrees > 165.0 && heading_degrees < 195.0)
+            else if (heading_degrees >= 165.0 && heading_degrees < 195.0)
             {
                 direction = "S";
             }
-            else if (heading_degrees > 195.0 && heading_degrees < 255.0)
+            else if (heading_degrees >= 195.0 && heading_degrees < 255.0)
             {
                 direction = "SE";
             }
-            else if (heading_degrees > 255.0 && heading_degrees < 285.0)
+            else if (heading_degrees >= 255.0 && heading_degrees < 285.0)
             {
                 direction = "E";
             }
-            else if (heading_degrees > 285.0 && heading_degrees < 350.0)
+            else if (heading_degrees >= 285.0 && heading_degrees < 350.0)
             {
                 direction = "NE";
             }
