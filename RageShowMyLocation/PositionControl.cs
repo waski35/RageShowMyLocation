@@ -24,6 +24,7 @@ namespace RageShowMyLocation
         public static UIMenu posMenu_speedlimit;
         public static UIMenu posMenu_currspeed;
         public static UIMenu posMenu_coords;
+        public static UIMenu boolMenuOptions;
 
         public static UIMenu font_sizeMenu;
         public static MenuPool _menuPool;
@@ -35,6 +36,7 @@ namespace RageShowMyLocation
         private static UIMenuItem set_pos_currspeed;
         private static UIMenuItem set_pos_coords;
         private static UIMenuItem fontsizemenuCaller;
+        private static UIMenuItem boolMenuCaller;
         private static UIMenuListItem font_size_steet_county_zone;
         private static UIMenuListItem font_size_heading;
         private static UIMenuListItem font_size_time;
@@ -73,7 +75,15 @@ namespace RageShowMyLocation
         private static UIMenuItem set_pos_coords_DOWN;
         private static UIMenuItem set_pos_coords_RIGHT;
         private static UIMenuItem set_pos_coords_LEFT;
-        
+
+        private static UIMenuCheckboxItem option_metric;
+        private static UIMenuCheckboxItem option_heading;
+        private static UIMenuCheckboxItem option_zone;
+        private static UIMenuCheckboxItem option_player_speed;
+        private static UIMenuCheckboxItem option_time;
+        private static UIMenuCheckboxItem option_coords;
+        private static UIMenuCheckboxItem option_box;
+        private static UIMenuCheckboxItem option_12hour_clock;
 
 
 
@@ -92,6 +102,7 @@ namespace RageShowMyLocation
 
 
             font_sizeMenu = new UIMenu("RSML MENU", "");
+            boolMenuOptions = new UIMenu("RSML MENU", "");
             
 
             _menuPool.Add(mainMenu);
@@ -102,6 +113,7 @@ namespace RageShowMyLocation
             _menuPool.Add(posMenu_heading);
             _menuPool.Add(posMenu_currspeed);
             _menuPool.Add(posMenu_coords);
+            _menuPool.Add(boolMenuOptions);
 
             font_sizes = new List<dynamic>
             {
@@ -136,6 +148,7 @@ namespace RageShowMyLocation
             mainMenu.AddItem(set_pos_currspeed = new UIMenuItem("Set position of current player speed element", ""));
             mainMenu.AddItem(set_pos_coords = new UIMenuItem("Set position of player coords element", ""));
             mainMenu.AddItem(fontsizemenuCaller = new UIMenuItem("Enter to set font size for elements"));
+            mainMenu.AddItem(boolMenuCaller = new UIMenuItem("Set which elements to show"));
 
             
             font_sizeMenu.AddItem(font_size_steet_county_zone = new UIMenuListItem("Set font size of street/county/zone element", font_sizes, 0));
@@ -176,6 +189,15 @@ namespace RageShowMyLocation
             posMenu_coords.AddItem(set_pos_coords_RIGHT = new UIMenuItem("Right", ""));
             posMenu_coords.AddItem(set_pos_coords_LEFT = new UIMenuItem("Left", ""));
 
+            boolMenuOptions.AddItem(option_metric = new UIMenuCheckboxItem("Set metric units (kmph)", Convert.ToBoolean(RageShowMyLocationClass.option_metric)));
+            boolMenuOptions.AddItem(option_12hour_clock = new UIMenuCheckboxItem("Set 12 hour clock", Convert.ToBoolean(RageShowMyLocationClass.option_12hourclock)));
+            boolMenuOptions.AddItem(option_box = new UIMenuCheckboxItem("Set black box around text", Convert.ToBoolean(RageShowMyLocationClass.option_rect_aroud_text)));
+            boolMenuOptions.AddItem(option_coords = new UIMenuCheckboxItem("Show coords", Convert.ToBoolean(RageShowMyLocationClass.option_show_cords)));
+            boolMenuOptions.AddItem(option_heading = new UIMenuCheckboxItem("Show heading", Convert.ToBoolean(RageShowMyLocationClass.option_show_heading)));
+            boolMenuOptions.AddItem(option_player_speed = new UIMenuCheckboxItem("Show player speed", Convert.ToBoolean(RageShowMyLocationClass.option_show_player_speed)));
+            boolMenuOptions.AddItem(option_time = new UIMenuCheckboxItem("Show time", Convert.ToBoolean(RageShowMyLocationClass.option_show_time)));
+            boolMenuOptions.AddItem(option_zone = new UIMenuCheckboxItem("Show zone/discrict", Convert.ToBoolean(RageShowMyLocationClass.option_show_zone)));
+
 
             mainMenu.RefreshIndex();
             font_sizeMenu.RefreshIndex();
@@ -185,6 +207,7 @@ namespace RageShowMyLocation
             posMenu_heading.RefreshIndex();
             posMenu_currspeed.RefreshIndex();
             posMenu_coords.RefreshIndex();
+            boolMenuOptions.RefreshIndex();
 
             mainMenu.BindMenuToItem(font_sizeMenu, fontsizemenuCaller);
             mainMenu.BindMenuToItem(posMenu_street, set_pos_steet_county_zone);
@@ -193,6 +216,7 @@ namespace RageShowMyLocation
             mainMenu.BindMenuToItem(posMenu_speedlimit, set_pos_speedlimit);
             mainMenu.BindMenuToItem(posMenu_currspeed, set_pos_currspeed);
             mainMenu.BindMenuToItem(posMenu_coords, set_pos_coords);
+            mainMenu.BindMenuToItem(boolMenuOptions, boolMenuCaller);
             
 
             mainMenu.OnItemSelect += OnItemSelect;
@@ -203,6 +227,8 @@ namespace RageShowMyLocation
             posMenu_speedlimit.OnItemSelect += OnItemSelect_posMenu_speedlimit;
             posMenu_currspeed.OnItemSelect += OnItemSelect_posMenu_currspeed;
             posMenu_coords.OnItemSelect += OnItemSelect_posMenu_coords;
+
+            boolMenuOptions.OnCheckboxChange += OnCheckBoxBoolOptionsChange;
 
             font_sizeMenu.OnListChange += OnListChange_font_size;
         }
@@ -393,7 +419,100 @@ namespace RageShowMyLocation
 
             RageShowMyLocationClass.SaveSettings();
         }
+        private static void OnCheckBoxBoolOptionsChange(UIMenu sender, UIMenuCheckboxItem checkbox, bool Checked)
+        {
+            if (sender != boolMenuOptions) return; // We only want to detect changes from our menu.
 
+            if (checkbox == option_12hour_clock)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_12hourclock = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_12hourclock = 0;
+                }
+            }
+            if (checkbox == option_box)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_rect_aroud_text = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_rect_aroud_text = 0;
+                }
+            }
+            if (checkbox == option_coords)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_show_cords = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_show_cords = 0;
+                }
+            }
+            if (checkbox == option_heading)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_show_heading = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_show_heading = 0;
+                }
+            }
+            if (checkbox == option_metric)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_metric = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_metric = 0;
+                }
+            }
+            if (checkbox == option_player_speed)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_show_player_speed = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_show_player_speed = 0;
+                }
+            }
+            if (checkbox == option_time)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_show_time = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_show_time = 0;
+                }
+            }
+            if (checkbox == option_zone)
+            {
+                if (Checked)
+                {
+                    RageShowMyLocationClass.option_show_zone = 1;
+                }
+                else
+                {
+                    RageShowMyLocationClass.option_show_zone = 0;
+                }
+            }
+            RageShowMyLocationClass.SaveSettings();
+        }
         
 
         public static void Process(System.Object obj, GraphicsEventArgs eva)
