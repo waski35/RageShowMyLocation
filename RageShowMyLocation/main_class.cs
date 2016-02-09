@@ -1861,6 +1861,10 @@ namespace RageShowMyLocation
             }
             else
             {
+                Game.LogTrivial("RNUI not found.");
+                Game.LogTrivial("exiting.");
+                Game.DisplayNotification("RSML : RNUI not found, exiting!");
+                ret = false;
                 return false;
             }
             return ret;
