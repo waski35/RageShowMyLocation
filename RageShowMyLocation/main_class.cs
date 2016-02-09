@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 [assembly: Rage.Attributes.Plugin("RageShowMyLocation", Description = "Shows current location, Speed Limit etc", Author = "waski35")]
 
 namespace RageShowMyLocation
@@ -116,12 +117,13 @@ namespace RageShowMyLocation
        
         public static void Main()
         {
-
+            Game.LogTrivial(plug_ver + " : Plugin loaded !");
+            if (!CheckVersionsofAssemblies()) return;
             Game.RawFrameRender += new EventHandler<GraphicsEventArgs>((obj, graf_ev) => DisplayPos(obj, graf_ev));
             Game.FrameRender += PositionControl.Process;
             Game.LogTrivial(plug_ver + " : Added event handler for FrameRender");
             ReadSettings();
-            Game.LogTrivial(plug_ver + " : Plugin loaded !");
+            
 
             PositionControl.InitMenus(); 
 
@@ -1791,6 +1793,35 @@ namespace RageShowMyLocation
 
 
             RageShowMyLocationClass.Reload();
+        }
+        private static bool CheckVersionsofAssemblies()
+        {
+            bool ret = false;
+            // Get the file version for the notepad.
+            FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo("RagePluginHook.exe");
+            if (myFileVersionInfo.FileMajorPart >= 0)
+            {
+                if (myFileVersionInfo.FileMinorPart >= 35 && myFileVersionInfo.FileMinorPart < 37)
+                {
+                    Game.LogTrivial("Found RPH version 0.35 or 0.36.");
+                    ret = true;
+                }
+                else if (myFileVersionInfo.FileMinorPart >= 33 && myFileVersionInfo.FileMinorPart < 35)
+                {
+                    Game.LogTrivial("Found RPH version 0.33 or 0.34.");
+                    Game.LogTrivial("exiting.");
+                    Game.DisplayNotification("RSML : Incompatible RPH version detected, exiting!");
+                    ret = false;
+                }
+                else
+                {
+                    Game.LogTrivial("Found version of RPH lesser than 0.33, there might be compatibility issues.");
+                    Game.LogTrivial("exiting.");
+                    Game.DisplayNotification("RSML : Highly Incompatible RPH version detected, exiting!");
+                    ret = false;
+                }
+            }
+            return ret;
         }
 
     }
