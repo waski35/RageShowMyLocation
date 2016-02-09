@@ -1813,11 +1813,25 @@ namespace RageShowMyLocation
                     Game.DisplayNotification("RSML : Incompatible RPH version detected, exiting!");
                     ret = false;
                 }
+                else if (myFileVersionInfo.FileMinorPart < 33)
+                {
+                    Game.LogTrivial("Found incompatible version of RPH.");
+                    Game.LogTrivial("exiting.");
+                    Game.DisplayNotification("RSML : Incompatible RPH version detected, exiting!");
+                    ret = false;
+                }
+                else if (myFileVersionInfo.FileMinorPart >= 37)
+                {
+                    Game.LogTrivial("Found non-tested version of RPH.");
+                    Game.LogTrivial("allowing to run.");
+                    Game.DisplayNotification("RSML : Non-tested version of RPH found. Allowing to run.");
+                    ret = true;
+                }
                 else
                 {
-                    Game.LogTrivial("Found version of RPH lesser than 0.33, there might be compatibility issues.");
+                    Game.LogTrivial("Found incompatible version of RPH.");
                     Game.LogTrivial("exiting.");
-                    Game.DisplayNotification("RSML : Highly Incompatible RPH version detected, exiting!");
+                    Game.DisplayNotification("RSML : Incompatible RPH version detected, exiting!");
                     ret = false;
                 }
             }
