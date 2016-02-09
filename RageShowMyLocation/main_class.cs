@@ -1809,9 +1809,8 @@ namespace RageShowMyLocation
                 else if (myFileVersionInfo.FileMinorPart >= 33 && myFileVersionInfo.FileMinorPart < 35)
                 {
                     Game.LogTrivial("Found RPH version 0.33 or 0.34.");
-                    Game.LogTrivial("exiting.");
-                    Game.DisplayNotification("RSML : Incompatible RPH version detected, exiting!");
-                    ret = false;
+                    
+                    ret = true;
                 }
                 else if (myFileVersionInfo.FileMinorPart < 33)
                 {
