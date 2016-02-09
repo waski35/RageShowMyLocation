@@ -1839,22 +1839,29 @@ namespace RageShowMyLocation
             {
                 return ret;
             }
-            FileVersionInfo myFileVersionInfo2 = FileVersionInfo.GetVersionInfo("RageNativeUI.dll");
-            if (myFileVersionInfo2.FileMajorPart >= 1)
+            if (File.Exists("RageNativeUI.dll"))
             {
-                if (myFileVersionInfo2.FileMinorPart == 3)
+                FileVersionInfo myFileVersionInfo2 = FileVersionInfo.GetVersionInfo("RageNativeUI.dll");
+                if (myFileVersionInfo2.FileMajorPart >= 1)
                 {
-                    Game.LogTrivial("Found RNUI version 1.3 allowing to start.");
-                    ret = true;
+                    if (myFileVersionInfo2.FileMinorPart == 3)
+                    {
+                        Game.LogTrivial("Found RNUI version 1.3 allowing to start.");
+                        ret = true;
+                    }
+                    else
+                    {
+                        Game.LogTrivial("Found incompatible version of RNUI.");
+                        Game.LogTrivial("exiting.");
+                        Game.DisplayNotification("RSML : Incompatible RNUI version detected, exiting!");
+                        ret = false;
+
+                    }
                 }
-                else
-                {
-                    Game.LogTrivial("Found incompatible version of RNUI.");
-                    Game.LogTrivial("exiting.");
-                    Game.DisplayNotification("RSML : Incompatible RNUI version detected, exiting!");
-                    ret = false;
-                    
-                }
+            }
+            else
+            {
+                return false;
             }
             return ret;
         }
