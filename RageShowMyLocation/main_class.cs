@@ -1738,7 +1738,7 @@ namespace RageShowMyLocation
                     
                 file_w.WriteLine("// This is settings file for RageShowMyLocation Plugin");
                 file_w.WriteLine("//");
-                file_w.WriteLine("// - PRESS - F5 (default) In-Game to show menu and configure font size and position");
+                file_w.WriteLine("// - PRESS - LShiftKey + F6 (default) In-Game to show menu and configure font size and position");
                 file_w.WriteLine("//");
                 file_w.WriteLine("// Settings Explanation :");
                 file_w.WriteLine("// pos_x, pos _y - screen position in pixels where text will be displayed, put here an integer, for each axis, x = 0 and y = 0 means upper left corner o screen,");
