@@ -1825,9 +1825,9 @@ namespace RageShowMyLocation
             FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo("RagePluginHook.exe");
             if (myFileVersionInfo.FileMajorPart >= 0)
             {
-                if (myFileVersionInfo.FileMinorPart >= 35 && myFileVersionInfo.FileMinorPart < 37)
+                if (myFileVersionInfo.FileMinorPart >= 35 && myFileVersionInfo.FileMinorPart < 39)
                 {
-                    Game.LogTrivial("Found RPH version 0.35 or 0.36.");
+                    Game.LogTrivial("Found RPH version 0.35 or 0.38.");
                     ret = true;
                 }
                 else if (myFileVersionInfo.FileMinorPart >= 33 && myFileVersionInfo.FileMinorPart < 35)
@@ -1843,7 +1843,7 @@ namespace RageShowMyLocation
                     Game.DisplayNotification("RSML : Incompatible RPH version detected, exiting!");
                     ret = false;
                 }
-                else if (myFileVersionInfo.FileMinorPart >= 37)
+                else if (myFileVersionInfo.FileMinorPart >= 39)
                 {
                     Game.LogTrivial("Found non-tested version of RPH.");
                     Game.LogTrivial("allowing to run.");
@@ -1867,9 +1867,9 @@ namespace RageShowMyLocation
                 FileVersionInfo myFileVersionInfo2 = FileVersionInfo.GetVersionInfo("RageNativeUI.dll");
                 if (myFileVersionInfo2.FileMajorPart >= 1)
                 {
-                    if (myFileVersionInfo2.FileMinorPart == 3)
+                    if (myFileVersionInfo2.FileMinorPart == 4)
                     {
-                        Game.LogTrivial("Found RNUI version 1.3 allowing to start.");
+                        Game.LogTrivial("Found RNUI version 1.4 allowing to start.");
                         ret = true;
                     }
                     else

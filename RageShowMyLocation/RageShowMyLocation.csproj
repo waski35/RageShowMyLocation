@@ -20,7 +20,7 @@
     <AssemblyVersionSettings>None.IncrementOnDemand.DayStamp.TimeStamp</AssemblyVersionSettings>
     <AssemblyFileVersionSettings>None.IncrementOnDemand.DayStamp.TimeStamp</AssemblyFileVersionSettings>
     <AssemblyInfoVersionSettings>None.IncrementOnDemand.DayStamp.TimeStamp</AssemblyInfoVersionSettings>
-    <AssemblyVersion>0.5.8.1901</AssemblyVersion>
+    <AssemblyVersion>0.6.23.0026</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,9 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RAGENativeUI, Version=1.3.0.0, Culture=neutral, processorArchitecture=AMD64">
+    <Reference Include="RAGENativeUI, Version=1.3.1.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>I:\DOWNLOADS - GAMES\DODATKI\gta v\LSPDFR\DEV\RAGENativeUI-1-3-1\RAGENativeUI.dll</HintPath>
+      <HintPath>I:\DOWNLOADS - GAMES\DODATKI\gta v\LSPDFR\DEV\RAGENativeUI-1-4\RAGENativeUI.dll</HintPath>
     </Reference>
     <Reference Include="RagePluginHookSDK, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
