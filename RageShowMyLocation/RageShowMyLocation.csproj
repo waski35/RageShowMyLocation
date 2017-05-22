@@ -20,7 +20,7 @@
     <AssemblyVersionSettings>None.DayOfYearStamp.DayStamp.TimeStamp</AssemblyVersionSettings>
     <AssemblyFileVersionSettings>None.DayOfYearStamp.DayStamp.TimeStamp</AssemblyFileVersionSettings>
     <AssemblyInfoVersionSettings>None.DayOfYearStamp.DayStamp.TimeStamp</AssemblyInfoVersionSettings>
-    <AssemblyVersion>0.171.19.1937</AssemblyVersion>
+    <AssemblyVersion>0.171.19.1955</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,12 +41,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RAGENativeUI">
-      <HintPath>..\..\..\..\..\DOWNLOADS - GAMES\gta v\LSPDFR\DEV\RAGENativeUI-1-4-1\RAGENativeUI.dll</HintPath>
+    <Reference Include="RAGENativeUI, Version=1.4.1.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\DOWNLOADS - GAMES\gta v\LSPDFR\DEV\RAGENativeUI-1.6\RAGENativeUI.dll</HintPath>
     </Reference>
     <Reference Include="RagePluginHookSDK, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DOWNLOADS - GAMES\gta v\LSPDFR\ragehook\RAGEPluginHook_0_40_952_8173_ALPHA\SDK\RagePluginHookSDK.dll</HintPath>
+      <HintPath>..\..\..\..\..\DOWNLOADS - GAMES\gta v\LSPDFR\ragehook\RAGEPluginHook_0_52_1061_10387_ALPHA\SDK\RagePluginHookSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

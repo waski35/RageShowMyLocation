@@ -1820,6 +1820,7 @@ namespace RageShowMyLocation
         }
         private static bool CheckVersionsofAssemblies()
         {
+            /*
             bool ret = false;
             // Get the file version for the notepad.
             FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo("RagePluginHook.exe");
@@ -1891,6 +1892,8 @@ namespace RageShowMyLocation
                 return false;
             }
             return ret;
+          */
+            return true;
         }
 
     }
