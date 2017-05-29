@@ -41,9 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RAGENativeUI, Version=1.4.1.0, Culture=neutral, processorArchitecture=AMD64">
+    <Reference Include="RAGENativeUI, Version=1.6.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DOWNLOADS - GAMES\gta v\LSPDFR\DEV\RAGENativeUI-1.6\RAGENativeUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\DOWNLOADS - GAMES\gta v\LSPDFR\DEV\RAGENativeUI-1-5-1\RAGENativeUI.dll</HintPath>
     </Reference>
     <Reference Include="RagePluginHookSDK, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
